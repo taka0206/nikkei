@@ -6,12 +6,17 @@
     <title>タイトル</title>
     <script>
     	function showMessage() {
-    		alert(document.getElementById("input").value);
+    		var input = document.getElementById("input").value;
+    		var output = "";
+    		for (var i = 0; i < 10; i++) output += input + "<br>";
+    			document.getElementById("output").innerHTML = output;
     	}
     </script>
 </head>
 <body>
 	<input id="input" />
-	<input type="button" value="ボタン" onclick="showMessage()" />
+	<input type="button" value="ボタン"
+		onclick="showMessage()" />
+	<div id="output"/>
 </body>
 </html>
