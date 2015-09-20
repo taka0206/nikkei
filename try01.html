@@ -6,13 +6,12 @@
     <title>タイトル</title>
     <script>
     	function showMessage() {
-    		alert("こんにちは!");
+    		alert(document.getElementById("input").value);
     	}
     </script>
 </head>
 <body>
-	<input type="button"
-	value="ボタン"
-	onclick="showMessage()" />
+	<input id="input" />
+	<input type="button" value="ボタン" onclick="showMessage()" />
 </body>
 </html>
