@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jquery.cookie</title>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+$(function(){
+  if($.cookie('email')) {
+    $('#txtMail').val($.cookie('email'));
+  }
+
+  $('#btnSave').click(function() {
+    $.cookie('email', $('#txtMail').val(), { expires: 30 });
+  });
+});
+</script>
+</head>
+<body>
+<form method="POST" action="">
+  メールアドレス：
+  <input id="txtMail" type="text" size="50" />
+  <input id="btnSave" type="button" value="送信" />
+</form>
+</body>
+</html>

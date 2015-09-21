@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>FixedHeaderTable</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/redmond/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" 
+  src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript" 
+ src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript"
+  src="js/jquery.fixheadertable.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('.data').fixheadertable({
+    caption     : '作曲者情報', 
+    colratio    : [200, 150, 150, 100, 50], 
+    height      : 300, 
+    width       : 670, 
+    zebra       : true, 
+    sortable    : true,
+    sortedColId : 0, 
+    resizeCol   : true,
+    pager       : true,
+    rowsPerPage : 10,
+    sortType    : ['string', 'date', 'string', 'string', 'integer'],
+    dateFormat  : 'Y-m-d'
+  });
+});
+</script>
+</head>
+<body>
+<table class="data">
+<thead><th>名前</th><th>誕生日</th><th>出身国</th><th>時代区分</th><th>享年</th></thead>
+<tbody>
+<tr><td>パッヘルベル</td><td>1653-09-01</td><td>ドイツ</td><td>バロック</td><td>52</td></tr>
+<tr><td>スカルラッティ</td><td>1660-05-02</td><td>イタリア</td><td>バロック</td><td>65</td></tr>
+<tr><td>クープラン</td><td>1668-11-10</td><td>フランス</td><td>バロック</td><td>64</td></tr>
+<tr><td>アルビノーニ</td><td>1671-06-14</td><td>イタリア</td><td>バロック</td><td>78</td></tr>
+<tr><td>ダカン</td><td>1694-07-04</td><td>フランス</td><td>バロック</td><td>27</td></tr>
+<tr><td>ルソー</td><td>1712-06-28</td><td>フランス</td><td>バロック</td><td>66</td></tr>
+<tr><td>グルック</td><td>1714-07-02</td><td>ドイツ</td><td>バロック</td><td>73</td></tr>
+<tr><td>サルティ</td><td>1729-12-01</td><td>イタリア</td><td>バロック</td><td>72</td></tr>
+<tr><td>ゴセック</td><td>1734-01-17</td><td>ベルギー</td><td>バロック</td><td>95</td></tr>
+<tr><td>マルティーニ</td><td>1741-08-31</td><td>ドイツ</td><td>バロック</td><td>74</td></tr>
+<tr><td>ボッケリーニ</td><td>1743-02-19</td><td>イタリア</td><td>バロック</td><td>62</td></tr>
+<tr><td>シュルツ</td><td>1747-03-31</td><td>ドイツ</td><td>バロック</td><td>53</td></tr>
+<tr><td>ヴィヴァルディ</td><td>1678-03-04</td><td>イタリア</td><td>バロック</td><td>63</td></tr>
+<tr><td>ヘンデル</td><td>1685-02-23</td><td>ドイツ</td><td>バロック</td><td>74</td></tr>
+<tr><td>J.S.バッハ</td><td>1685-03-21</td><td>ドイツ</td><td>バロック</td><td>65</td></tr>
+<tr><td>ハイドン</td><td>1732-03-31</td><td>オーストリア</td><td>古典派</td><td>77</td></tr>
+<tr><td>クレメンティ</td><td>1752-01-23</td><td>イタリア</td><td>古典派</td><td>80</td></tr>
+<tr><td>モーツァルト</td><td>1756-01-27</td><td>オーストリア</td><td>古典派</td><td>35</td></tr>
+<tr><td>ベートーヴェン</td><td>1770-12-17</td><td>ドイツ</td><td>古典派</td><td>56</td></tr>
+<tr><td>クラーマー</td><td>1771-02-24</td><td>ドイツ</td><td>古典派</td><td>87</td></tr>
+<tr><td>フンメル</td><td>1778-11-14</td><td>ハンガリー</td><td>古典派</td><td>58</td></tr>
+<tr><td>ディアベリ</td><td>1781-09-06</td><td>オーストリア</td><td>古典派</td><td>76</td></tr>
+<tr><td>アラビエフ</td><td>1787-08-15</td><td>ロシア</td><td>ロマン派</td><td>63</td></tr>
+<tr><td>クーラウ</td><td>1786-09-11</td><td>ドイツ</td><td>ロマン派</td><td>45</td></tr>
+<tr><td>パガニーニ</td><td>1782-10-27</td><td>イタリア</td><td>ロマン派</td><td>57</td></tr>
+<tr><td>ウェーバー</td><td>1786-11-18</td><td>ドイツ</td><td>ロマン派</td><td>39</td></tr>
+<tr><td>グルーバー</td><td>1787-11-25</td><td>オーストリア</td><td>ロマン派</td><td>75</td></tr>
+<tr><td>ジルヒャー</td><td>1789-06-27</td><td>ドイツ</td><td>ロマン派</td><td>71</td></tr>
+<tr><td>チェルニー</td><td>1791-02-21</td><td>オーストリア</td><td>ロマン派</td><td>66</td></tr>
+<tr><td>ロッシーニ</td><td>1792-02-29</td><td>イタリア</td><td>ロマン派</td><td>76</td></tr>
+<tr><td>バイエル</td><td>1803-07-25</td><td>ドイツ</td><td>ロマン派</td><td>62</td></tr>
+<tr><td>シュトラウス（父）</td><td>1804-03-14</td><td>オーストリア</td><td>ロマン派</td><td>45</td></tr>
+<tr><td>グリンカ</td><td>1804-06-01</td><td>ロシア</td><td>ロマン派</td><td>52</td></tr>
+<tr><td>ブルグミューラー</td><td>1806-12-04</td><td>ドイツ</td><td>ロマン派</td><td>67</td></tr>
+<tr><td>キュッケン</td><td>1810-11-16</td><td>ドイツ</td><td>ロマン派</td><td>71</td></tr>
+<tr><td>タウベルト</td><td>1811-03-23</td><td>ドイツ</td><td>ロマン派</td><td>79</td></tr>
+<tr><td>タウヴィッツ</td><td>1812-01-21</td><td>ドイツ</td><td>ロマン派</td><td>82</td></tr>
+<tr><td>ナイト</td><td>1812-07-26</td><td>イギリス</td><td>ロマン派</td><td>74</td></tr>
+<tr><td>グノー</td><td>1818-06-18</td><td>フランス</td><td>ロマン派</td><td>75</td></tr>
+<tr><td>スッペ</td><td>1819-04-18</td><td>オーストリア</td><td>ロマン派</td><td>76</td></tr>
+<tr><td>ラフ</td><td>1822-05-27</td><td>イタリア</td><td>ロマン派</td><td>60</td></tr>
+<tr><td>アルディーティ</td><td>1822-07-16</td><td>ドイツ</td><td>ロマン派</td><td>80</td></tr>
+<tr><td>フランク</td><td>1822-12-10</td><td>ベルギー</td><td>ロマン派</td><td>67</td></tr>
+<tr><td>ライネッケ</td><td>1824-06-23</td><td>ドイツ</td><td>ロマン派</td><td>85</td></tr>
+<tr><td>シュトラウス（子）</td><td>1825-10-25</td><td>オーストリア</td><td>ロマン派</td><td>73</td></tr>
+<tr><td>ゴットシャルク</td><td>1829-05-08</td><td>アメリカ</td><td>ロマン派</td><td>40</td></tr>
+<tr><td>ブラーガ</td><td>1829-06-09</td><td>イタリア</td><td>ロマン派</td><td>78</td></tr>
+<tr><td>ランゲ</td><td>1830-08-13</td><td>ドイツ</td><td>ロマン派</td><td>59</td></tr>
+<tr><td>ミヒャエリス</td><td>1831-03-15</td><td>ドイツ</td><td>ロマン派</td><td>56</td></tr>
+<tr><td>ドリーブ</td><td>1836-02-21</td><td>フランス</td><td>ロマン派</td><td>54</td></tr>
+<tr><td>ワルトトイフェル</td><td>1837-12-09</td><td>フランス</td><td>ロマン派</td><td>77</td></tr>
+<tr><td>マスネ</td><td>1842-05-12</td><td>フランス</td><td>ロマン派</td><td>70</td></tr>
+<tr><td>ボーム</td><td>1844-09-11</td><td>ドイツ</td><td>ロマン派</td><td>75</td></tr>
+<tr><td>シューベルト</td><td>1797-01-31</td><td>オーストリア</td><td>ロマン派</td><td>31</td></tr>
+<tr><td>メンデルスゾーン</td><td>1809-02-03</td><td>ドイツ</td><td>ロマン派</td><td>38</td></tr>
+<tr><td>ショパン</td><td>1810-03-01</td><td>ポーランド</td><td>ロマン派</td><td>39</td></tr>
+<tr><td>シューマン</td><td>1810-06-08</td><td>ドイツ</td><td>ロマン派</td><td>46</td></tr>
+<tr><td>ワーグナー</td><td>1813-05-22</td><td>ドイツ</td><td>ロマン派</td><td>69</td></tr>
+<tr><td>ヴェルディ</td><td>1813-10-10</td><td>イタリア</td><td>ロマン派</td><td>87</td></tr>
+<tr><td>エステン</td><td>1813-12-31</td><td>ドイツ</td><td>ロマン派</td><td>56</td></tr>
+<tr><td>エルメンライヒ</td><td>1816-02-10</td><td>ドイツ</td><td>ロマン派</td><td>89</td></tr>
+<tr><td>オッフェンバック</td><td>1819-06-20</td><td>ドイツ</td><td>ロマン派</td><td>61</td></tr>
+<tr><td>グルリット</td><td>1820-02-10</td><td>ドイツ</td><td>ロマン派</td><td>81</td></tr>
+<tr><td>スメタナ</td><td>1824-03-02</td><td>チェコ</td><td>ロマン派</td><td>60</td></tr>
+<tr><td>フォスター</td><td>1826-07-04</td><td>アメリカ</td><td>ロマン派</td><td>37</td></tr>
+<tr><td>ビューロー</td><td>1830-01-08</td><td>ドイツ</td><td>ロマン派</td><td>64</td></tr>
+<tr><td>ブラームス</td><td>1833-05-07</td><td>ドイツ</td><td>ロマン派</td><td>64</td></tr>
+<tr><td>ボロディン</td><td>1833-11-12</td><td>ロシア</td><td>ロマン派</td><td>53</td></tr>
+<tr><td>キュイ</td><td>1835-01-18</td><td>ロシア</td><td>ロマン派</td><td>83</td></tr>
+<tr><td>ストリーボッグ</td><td>1835-09-28</td><td>ベルギー</td><td>ロマン派</td><td>50</td></tr>
+<tr><td>サン・サーンス</td><td>1835-10-09</td><td>フランス</td><td>ロマン派</td><td>86</td></tr>
+<tr><td>バラキレフ</td><td>1837-01-02</td><td>ロシア</td><td>ロマン派</td><td>73</td></tr>
+<tr><td>ビゼー</td><td>1838-10-25</td><td>フランス</td><td>ロマン派</td><td>36</td></tr>
+<tr><td>ムソルグスキー</td><td>1839-03-21</td><td>ロシア</td><td>ロマン派</td><td>42</td></tr>
+<tr><td>チャイコフスキー</td><td>1840-05-07</td><td>ロシア</td><td>ロマン派</td><td>53</td></tr>
+<tr><td>ドヴォルザーク</td><td>1841-09-08</td><td>チェコ</td><td>ロマン派</td><td>62</td></tr>
+<tr><td>グリーク</td><td>1843-06-15</td><td>ノルウェー</td><td>ロマン派</td><td>64</td></tr>
+<tr><td>サラサーテ</td><td>1844-03-10</td><td>スペイン</td><td>ロマン派</td><td>64</td></tr>
+<tr><td>リムスキーコルサコフ</td><td>1844-03-18</td><td>ロシア</td><td>ロマン派</td><td>64</td></tr>
+<tr><td>フォーレ</td><td>1845-05-12</td><td>フランス</td><td>ロマン派</td><td>79</td></tr>
+<tr><td>プッチーニ</td><td>1858-12-23</td><td>イタリア</td><td>ロマン派</td><td>65</td></tr>
+<tr><td>ドビュッシー</td><td>1862-08-22</td><td>フランス</td><td>現代</td><td>55</td></tr>
+<tr><td>サティ</td><td>1866-05-17</td><td>フランス</td><td>現代</td><td>59</td></tr>
+<tr><td>グラナドス</td><td>1867-07-27</td><td>スペイン</td><td>現代</td><td>48</td></tr>
+<tr><td>ジョプリン</td><td>1868-11-24</td><td>アメリカ</td><td>現代</td><td>48</td></tr>
+<tr><td>ラフマニノフ</td><td>1873-04-01</td><td>ロシア</td><td>現代</td><td>69</td></tr>
+<tr><td>ラヴェル</td><td>1875-03-07</td><td>フランス</td><td>現代</td><td>62</td></tr>
+<tr><td>レスピーギ</td><td>1879-07-09</td><td>イタリア</td><td>現代</td><td>57</td></tr>
+<tr><td>プロコフィエフ</td><td>1891-04-23</td><td>ロシア</td><td>現代</td><td>61</td></tr>
+<tr><td>ガーシュイン</td><td>1898-09-26</td><td>アメリカ</td><td>現代</td><td>38</td></tr>
+<tr><td>ショスタコーヴィチ</td><td>1906-09-25</td><td>ロシア</td><td>現代</td><td>68</td></tr>
+<tr><td>メシアン</td><td>1908-12-10</td><td>フランス</td><td>現代</td><td>83</td></tr>
+</tbody>
+</table>
+</body>
+</html>

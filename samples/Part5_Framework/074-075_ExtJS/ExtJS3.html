@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>ExtJSサンプル</title>
+  <link href="css/ext-all.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/ext-all.js"></script>
+  <script type="text/javascript">
+  <!--
+  // 必要なモジュールを読み込む
+  Ext.require([
+         'Ext.grid.*',
+         'Ext.data.*'
+       ]);
+  
+  // データ定義（model）
+  Ext.define('Books', {
+    extend: 'Ext.data.Model',
+    fields: [
+       {name: 'name'},
+       {name: 'price', type: 'int'},
+       {name: 'releaseDate', type: 'date'}
+    ]
+  });
+  
+  Ext.onReady(function() {
+    // 書籍データ
+    var myData = [
+      ['アプリを作ろう！　Android入門 ～ゼロから学ぶアプリの作成から公開まで', 1995, '2012/9/13'],
+      ['TECHNICAL MASTER　はじめてのJSP＆サーブレット　Eclipse 3.7 Indigo＋Tomcat 7対応版', 2730, '2012/3/24'],
+      ['Windows Azure Platform開発入門', 3990, '2012/1/6'],
+      ['10日でおぼえるPHP入門教室 第4版', 2709, '2012/9/13'],
+      ['アプリを作ろう！HTML5入門～HTML5+CSS3+JavaScriptで学ぶAndroid/iPhoneアプリ作成',  1995, '2012/6/07'],
+      ['Ruby on Rails 3ポケットリファレンス', 2780, '2012/1/26'],
+      ['ASP.NET逆引き大全600の極意 ASP.NET 2.0/3.5/4対応', 3150, '2011/9/14']
+    ];
+
+    // Model、データとの関連付け
+    var store = Ext.create('Ext.data.ArrayStore', {
+      model: 'Books',
+      data: myData
+    });
+
+    // 日本円表示
+    function jpMoney(val) {
+      return val+"円";
+    }
+    
+    // グリッドを作成
+    var grid = Ext.create('Ext.grid.Panel', {
+      store: store,
+      columns: [
+        {
+          text   : '書籍名',
+          flex   : 1,
+          sortable : false,
+          dataIndex: 'name'
+        },
+        {
+          text   : '価格（定価）',
+          sortable : true,
+          renderer : jpMoney,
+          dataIndex: 'price'
+        },
+        {
+          text   : '発売日',
+          sortable : true,
+          renderer : Ext.util.Format.dateRenderer('Y/m/d'),
+          dataIndex: 'releaseDate'
+        }
+      ],
+      width: 600,
+      title: '書籍一覧',
+      // 表示するHTMLのid
+      renderTo: 'grid-books'
+    });
+  });
+  -->
+  </script>
+</head>
+<body>
+<div id="grid-books"></div>
+</body>
+</html>

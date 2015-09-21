@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI datasourceのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+</head>
+<body>
+<h1>書籍紹介</h1>
+<div id="output_response"></div>
+</body>
+<script type="text/javascript">
+<!--
+YUI().use("datasource","node", function (Y) {
+  // データ・ソースオブジェクトの作成。引数に、取得するデータソースのURLを指定する。(1)
+  var myDataSource = new Y.DataSource.Get({
+    source: "http://localhost/data/books.php?"
+  });
+  
+  // http://localhost/data/books.php?q=foo&callback=YUI.Env.DataSource.callbacks.yui_3_8_0_1_[時間]
+  // が呼び出される。(2)
+  myDataSource.sendRequest({
+    // URLに付けるGETパラメータ
+    request : "q=foo",
+    callback : {// (3)
+      // 取得が成功した場合にはいるコールバック関数 (4)
+      success : function(e) {
+        // データをHTMLとして出力する要素オブジェクト
+        var output = Y.one("#output_response");
+        // 取得した本の一覧データ
+        var books = e.response["results"][0]["books"];
+        var html = "";
+        for ( var i = 0; i < books.length; i++) {
+          html += '<tr><td>' + books[i].name
+              + '</td><td>定価' + books[i].price
+              + '円</td></tr>';
+        }
+        // 取得した一覧をHTMLで表示
+        output.setHTML('<table border="1">'
+            + '<tr><td>名称</td><td>価格</td></tr>' + html
+            + '</table>');
+      },
+      // 取得に失敗した場合に入るコールバック関数 (5)
+      failure : function(e) {
+        console.log(e.error.message);
+      }
+    }
+  });
+});
+-->
+</script>
+</html>

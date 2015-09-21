@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jQueryライブラリをインポート（1） -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- taffyライブラリをインポート（2） -->
+  <script type="text/javascript" src="js/taffy.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      // データベースの値の表示
+      var echo_db = function(r) {
+        $('#result').append( 'gender: ' + r.gender + ', name1: '
+                             + r.name1 + ', name2: ' + r.name2
+                             + ', city: ' + r.city + '<br />' );
+      }
+
+      // TAFFYオブジェクトの生成（3）
+      var db = TAFFY([{ "id":1,
+                                   "gender":"M",
+                                   "name1":"智夫",
+                                   "name2":"大野",
+                                   "city":"東京都"
+                                 },
+                                 { "id":2,
+                                   "gender":"F",
+                                   "name1":"淳",
+                                   "name2":"柴田",
+                                   "city":"東京都"
+                                 },
+                                 { "id":3,
+                                   "gender":"M",
+                                   "name1":"政志",
+                                   "name2":"相葉",
+                                   "city":"千葉市"
+                                 },
+                                 { "id":4,
+                                   "gender":"F",
+                                   "name1":"彩",
+                                   "name2":"山崎",
+                                   "city":"茨木市"
+                                 } 
+                                ]);
+
+
+      $('#result').append( '- 全レコードの取得<br />');
+      // 全レコードの取得（4）
+      var all = db();
+
+      // レコードの列挙（5）
+      all.each( function(r) { echo_db(r); });
+
+      $('#result').append( '<hr />- gender項目がF<br />');
+      // gender項目がFのレコード取得（6）
+      db({gender:"F"}).each( function(r) { echo_db(r); });
+
+      $('#result').append( '<hr />- city項目で「市」で終わる<br />');
+      //  city項目で「市」で終わるレコード取得（7）
+      db({city:{right:"市"}}).each( function(r) {
+        echo_db(r);
+      });
+
+      $('#result').append( '<hr />- name1項目の取得<br />');
+      // 特定列の取得（8）
+      var ids = db().select("name1");
+      $.each(ids, function(i,val) {
+        $('#result').append( 'name1: ' + val + '<br />');
+      });
+
+      $('#result').append(
+         '<hr />- city項目の取得（重複を除く）<br />');
+      // 重複なしの取得（9）
+      var cities = db().distinct("city");
+      $.each(cities, function(i,val) {
+        $('#result').append( 'city: ' + val + '<br />');
+      });
+
+      $('#result').append( '<hr />- レコードの更新<br />');
+      // レコードの更新（10）
+      db({name1:"智夫",name2:"大野"}).update({city:"三鷹市"});
+      db().each( function(r) { echo_db(r); });
+
+      $('#result').append( '<hr />- レコードの削除<br />');
+      // レコードの削除（11）
+      db({id:4}).remove();
+      db().each( function(r) { echo_db(r); });
+
+      // レコードの追加（12）
+      $('#result').append( '<hr />- レコードの追加<br />');
+      db.insert({ "id":5,
+                  "gender":"F",
+                  "name1":"美紀",
+                  "name2":"渡辺",
+                  "city":"奈良市"
+                 });
+
+      // レコードのソート（13）
+      db().order("gender").each( function(r) { echo_db(r); });
+
+    });
+  </script>
+</head>
+<body>
+<div id="result"></div>
+</body>
+</html>

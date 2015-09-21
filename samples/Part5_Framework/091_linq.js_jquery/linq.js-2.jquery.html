@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>linq.jquery.js sample</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- linq.jsをインポート -->
+  <script type="text/javascript" src="js/linq.js"></script>
+  <!-- linq.jsのjQuery Plug-inをインポート -->
+  <script type="text/javascript" src="js/linq.jquery.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (1) 配列からリストを作成
+      var values = ["hoge", "foo", "bar"];
+      Enumerable.from(values)
+        .select(function (x) { return $("<li>").text(x); })
+        .tojQuery()
+        .appendTo("#destination");
+
+      // (2) リストから集計
+      var sum = $("#source li")
+        .toEnumerable()
+        .select(function (x) { return parseInt(x.text()); })
+        .sum();
+      $("#sum").text(sum);
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <h2>配列からリストを作成</h2>
+    <ol id="destination"></ol>
+  </div>
+  <div>
+    <h2>リストから集計</h2>
+    <ul id="source">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    集計結果: <span id="sum"></span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>RxJS - Observerパターン</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- RxJSをインポート -->
+  <script type="text/javascript" src="js/rx.js"></script>
+  <!-- CountUpObservalbeクラスをインポート -->
+  <script type="text/javascript" src="js/countupobservable.js"></script>
+  <!-- AlertObserverクラスをインポート -->
+  <script type="text/javascript" src="js/alertobserver.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (1) Observableオブジェクト作成
+      var observable = new CountUpObservable();
+
+      // (2) Observerオブジェクト作成
+      var observer = new AlertObserver();
+
+      // (3) Observer登録
+      observable.subscribe(observer);
+
+      // (4) Observerの定義を関数で与える
+      observable.subscribe(
+        // onNext
+        function (value) {
+          $("#current").text(value);
+        }
+      );
+
+      // (5) 値を二乗して通知する
+      observable
+        .select(function (x) { return x * x; })
+        .subscribe(function (value) {
+          $("#square").text(value);
+        }
+      );
+
+      // (6) 偶数のみ通知する
+      observable
+        .where(function (x) { return x % 2 == 0; })
+        .subscribe(function (value) {
+          $("#even").text(value);
+        }
+      );
+
+      // (7) 奇数のみを2倍にして通知する
+      observable
+        .where(function (x) { return x % 2 != 0; })
+        .select(function (x) { return x * 2; })
+        .subscribe(function (value) {
+          $("#odd-square").text(value);
+        }
+      );
+
+      // カウントアップ処理実行
+      $("#countup").click(function () {
+        observable.countup();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <button id="countup">カウントアップ</button>
+  </div>
+  <table>
+    <tr>
+      <td>現在の値</td>
+      <td id="current"></td>
+    </tr>
+    <tr>
+      <td>二乗して表示</td>
+      <td id="square"></td>
+    </tr>
+    <tr>
+      <td>偶数のみ表示</td>
+      <td id="even"></td>
+    </tr>
+    <tr>
+      <td>奇数のみを2倍して表示</td>
+      <td id="odd-square"></td>
+    </tr>
+  </table>
+</body>
+</html>

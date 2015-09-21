@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FizzBuzz Test</title>
+  <!-- Jasmineテストレポートページ用CSSをインポート -->
+  <link rel="stylesheet" type="text/css" href="css/jasmine.css">
+  <!-- Jasmine本体をインポート -->
+  <script type="text/javascript" src="js/jasmine.js"></script>
+  <!-- Jasmineテストレポートページ用jsをインポート -->
+  <script type="text/javascript" src="js/jasmine-html.js"></script>
+
+  <!-- テスト対象コードをインポート -->
+  <script type="text/javascript" src="js/fizzbuzz.js"></script>
+  <!-- テストコードをインポート -->
+  <script type="text/javascript" src="js/fizzbuzzSpec.js"></script>
+
+  <!-- レポートページ生成スクリプト（変更しない） -->
+  <script type="text/javascript">
+    (function () {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 250;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function (spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function () {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+  </script>
+</head>
+<body>
+  <!-- bodyは空にする -->
+</body>
+</html>

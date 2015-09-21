@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- prettyLoaderの標準スタイルをインポート（1） -->
+  <link rel=stylesheet
+    href="css/prettyLoader.css" type="text/css" />
+
+  <!-- jQueryライブラリをインポート（2） -->
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+
+  <!-- prettyLoaderライブラリをインポート（3） -->
+  <script type="text/javascript"
+    src="js/jquery.prettyLoader.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      // prettyLoaderプロジェクトの生成（4）
+      $.prettyLoader({ loader: 'css/images/ajax-loader.gif' });
+
+      $('button.view1').click( function(){
+        // prettyLoaderの表示（5）
+        $.prettyLoader.show();
+      });
+      $('button.view2').click( function(){
+        $.prettyLoader.show(2000);
+      });
+      $('button.view3').click( function(){
+        // prettyLoaderの消去（6）
+        $.prettyLoader.hide();
+      });
+      $('button.view4').click( function(){
+        // Ajaxで読み込む（7）
+        $('#ajax_container').load('prettyloader-ajax.php');
+      });
+    });
+  </script>
+</head>
+<body>
+  <button class="view1">ローディング画像の表示</button>
+  <button class="view2">ローディング画像の表示（2秒間）</button>
+  <button class="view3">ローディング画像の消去</button>
+  <button class="view4">Ajax通信</button>
+  <div id="ajax_container"></div>
+</body>
+</html>

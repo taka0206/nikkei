@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	<!-- QUO.jsライブラリをインポート -->
+	<script type="text/javascript" src="js/quo.js"></script>
+
+	<script type="text/javascript">
+		$$(document).ready(function(){
+
+			$$("#quo").swipeRight(function(){
+				alert("右スワイプ");
+			});
+			$$("#quo").swipeLeft(function(){
+				alert("左スワイプ");
+			});
+			$$("#quo").hold(function(){
+				alert("長押し");
+			});
+			$$("#quo").pinch(function(){
+				alert("ピンチ");
+			});
+			$$("#quo").on("tap",function(){
+				alert("タップ");
+			});
+			$$("#quo").append( $$.environment().browser );
+			$$("#quo").append( "<br />" );
+			$$("#quo").append( "width:" + $$.environment().screen.width );
+			$$("#quo").append( "<br />" );
+			$$("#quo").append( "height:" + $$.environment().screen.height );
+		});
+	</script>
+</head>
+<body>
+<div id="quo"></div>
+</body>
+</html>
+

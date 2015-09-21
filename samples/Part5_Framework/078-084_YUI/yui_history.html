@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI Historyのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<style>
+  #demo img {
+    border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+<div id="demo">
+  <h1>historyのサンプル</h1>
+  <ul>
+    <li><a id="tabImg01">Img01</a></li>
+    <li><a id="tabImg02">Img02</a></li>
+  </ul>
+  <div>
+    <div id="contents">
+    </div>
+  </div>
+</div>
+</body>
+<script>
+// モジュールの読み込み
+YUI().use("history", "event", function (Y) {
+  var history = new Y.History();
+  
+  // リストクリック時のコールバック関数の配列
+  var clickCallbacks = [
+  function (e) {
+      Y.one('#contents').set('innerHTML', '<img src="img/img1.jpg" alt="Img01">');
+      history.addValue('img', "0");
+    },function (e) {
+      Y.one('#contents').set('innerHTML', '<img src="img/img2.jpg" alt="Img02">');
+      history.addValue('img', "1");
+    }
+  ];
+  
+  // 戻るや初期表示時に、#img=のパラメータを判断して画像を表示するコールバック関数
+  var display = function(){
+    var param = history.get('img');
+      if(param && (param === "0" || param === "1")) clickCallbacks[history.get('img')]();
+  }
+  
+  // クリック時の処理
+  Y.one("#tabImg01").on("click", clickCallbacks[0]);
+  Y.one("#tabImg02").on("click", clickCallbacks[1]);
+  
+  // ブラウザの戻るボタンや進むボタンが押された際に呼び出されるイベント
+  Y.on('history:change',display);
+  
+  // 初期表示
+  display();
+});
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jQuery.calendarPickerの標準スタイルをインポート -->
+  <link rel=stylesheet 
+   href="css/jquery.calendarPicker.css" type="text/css" />
+
+  <!-- jQueryライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+
+  <!-- mousewheelライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.mousewheel.js"></script>
+
+  <!-- jQuery.calendarPickerライブラリをインポート -->
+  <script type="text/javascript" 
+    src="js/jquery.calendarPicker.js"></script>
+
+  <script type="text/javascript">
+
+    var cal1;
+
+    $(function(){
+
+      cal1 = $("#cal1").calendarPicker({
+
+        callback:function(cal) {
+
+          // 選択した日付の表示
+          $("#str1").text(cal.currentDate.toLocaleString());
+        }
+
+      });
+
+      $("#cal2").calendarPicker({
+        months: 3,
+        monthNames: [
+          "1月", "2月", "3月", "4月", "5月", "6月",
+          "7月", "8月", "9月", "10月", "11月", "12月"
+        ],
+        dayNames: ["日", "月", "火", "水", "木", "金", "土"],
+
+        callback:function(cal) {
+
+          // カレンダー１の現在日を変更する
+          cal1.changeDate(cal.currentDate);
+        }
+
+      });
+
+    });
+
+  </script>
+</head>
+<body>
+
+  ■選択した日付：<div id="str1"></div>
+  ■カレンダー１（デフォルト表示）<div id="cal1" style="width:400px"></div>
+  <a href="#" onclick="cal1.changeDate(new Date())">本日に移動</a>
+  <br />
+  <br />
+  ■カレンダー２（日本語表記）<div id="cal2" style="width:400px"></div>
+  ※日付を選択すると、カレンダー１も連動して選択される。
+
+</body>
+</html>

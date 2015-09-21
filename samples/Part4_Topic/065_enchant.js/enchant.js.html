@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- スマートフォン用の設定。端末にwidthに合わせ、ピンチイン/ピンチアウトを禁止。 -->
+<meta name="viewport" content="width=device-width, user-scalable=no"> 
+<!-- iPhoneの場合、アドレスバーを禁止。 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>シューティングサンプル</title>
+<script type="text/javascript" src="js/enchant.min.js"></script>
+<script type="text/javascript">
+<!--
+enchant();
+var game;
+
+window.onload = function(){
+  // ゲームの画面サイズを指定し、領域を確保する
+  game = new Game(320, 320);
+  // 1秒間に起こるフレームの数
+  game.fps = 24;
+  game.preload("img/space0.png", "img/bar.png");
+  
+  // プリロード終了後に呼ばれる関数を指定する
+  game.onload = function() {
+    // 自機の画像と座標を指定する 
+    fighter = new Sprite(32, 64);
+    fighter.x = 0;
+    fighter.y = 240;
+    fighter.image = game.assets['img/space0.png'];
+    
+    // タッチした時に、自機の座標を変更する
+    game.rootScene.addEventListener('touchstart', function(e){
+      fighter.x = e.localX
+    });
+
+    // 指を動かした時に自機の座標を変更する
+    game.rootScene.addEventListener('touchmove', function(e){
+      fighter.x = e.localX
+    });
+    
+    // ここからミサイルを撃ちまくる
+    game.rootScene.addEventListener('enterframe', function(){
+      if(game.frame % 4 === 0){
+        var s = new Missile(fighter.x + 14, fighter.y - 14, 10);
+      }
+    });
+    
+    // 画面に各要素を表示
+    game.rootScene.addChild(fighter); 
+  }
+  // ゲームのスタート
+  game.start();
+}
+
+// ミサイルClass
+var Missile = enchant.Class.create(enchant.Sprite, {
+  initialize: function(x, y, speed){
+    enchant.Sprite.call(this);
+    // ミサイルの画像と座標を指定する
+    this.x = x; this.y = y;
+    this.image = game.assets['img/bar.png'];
+    this.width = 3; this.height = 16;
+    // ミサイルの進むスピード
+    this.vy = speed;
+    
+    // ミサイルを動かす
+    this.addEventListener('enterframe', function(){
+      this.y -= this.vy;
+      // 画面外に出たら削除
+      if(this.y > 320 || this.x > 320){
+        this.remove();
+      }
+    });
+    game.rootScene.addChild(this);
+  },
+  remove: function(){
+    // ミサイルの削除
+    game.rootScene.removeChild(this);
+  }
+});
+-->
+</script>
+</head>
+<body style="margin: 0;padding: 0;">
+</body>
+</html>

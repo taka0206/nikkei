@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Zoombox</title>
+<link rel="stylesheet" type="text/css" href="css/zoombox.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" 
+  src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript" src="js/zoombox.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('a.zoombox').zoombox({ gallery: true });
+});
+</script>
+</head>
+<body>
+<div id="content">
+  <a href="images/01.jpg"
+    title="こぶた" class="zoombox zgallery0">
+    <img src="images/mini/01_mini.jpg" />
+  </a>
+  <a href="images/02.jpg"
+    title="黄色の鳥" class="zoombox zgallery0">
+    <img src="images/mini/02_mini.jpg" />
+  </a>
+  <a href="images/03.jpg"
+    title="カエル" class="zoombox zgallery1">
+    <img src="images/mini/03_mini.jpg" />
+  </a>
+  <a href="images/04.jpg"
+    title="ぞう" class="zoombox zgallery1">
+    <img src="images/mini/04_mini.jpg" />
+  </a>
+  <a href="images/05.jpg"
+    title="ねずみ" class="zoombox zgallery1">
+    <img src="images/mini/05_mini.jpg" />
+  </a>
+</div>
+</body>
+</html>

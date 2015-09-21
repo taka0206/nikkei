@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <link rel="stylesheet" href="css/suggest.css" type="text/css" />
+  <!-- スクロール用のスタイル（1）-->
+  <style type="text/css">
+  <!--
+  #suggest {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccccff;
+    width: 450px;
+    height: 80px;
+    overflow: auto;
+    }
+  -->
+  </style>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <script type="text/javascript" src="js/suggest.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      new Suggest.Local(
+        "text",    // 入力のエレメントID
+        "suggest", // 補完候補を表示するエリアのID
+        [],        // カラの配列（2）
+        {
+          dispMax:0, // 表示件数の制限なし
+
+          // コールバック関数の定義（3）
+          hookBeforeSearch: function(text) {
+            var self = this;
+            // postメソッドによる読み込み
+            $.post("sample.php",
+              function(data){
+                // 内部変数にセットする（4）
+                self.candidateList = eval(data);
+              }
+            );
+          }
+        }
+      );
+    });
+  </script>
+
+</head>
+<body>
+
+<form onsubmit="return false;">
+  <table>
+    <tr>
+      <td>入力:</td>
+      <td>
+        <!-- 入力フォーム -->
+        <input id="text" type="text" name="pattern" value=""
+          autocomplete="off" size="50" style="display: block">
+        <!-- 補完候補を表示するエリア（5） -->
+        <div id="suggest" style="display:none;"
+          tabindex="-1"></div>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

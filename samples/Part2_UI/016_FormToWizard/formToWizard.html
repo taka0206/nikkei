@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+<head>
+<title>FormToWizard</title>
+<style type="text/css">
+.prev, .next { font-size: 12px; color: #fff; background-color: #f93;
+  padding:8px; text-decoration:none; }
+.prev { float:left; }
+.next { float:right; }
+#steps { list-style:none; overflow:hidden; padding:0px; }
+#steps li { font-size:20px; float:left; padding:15px; color:#cc9; }
+#steps li span { font-size:10px; display:block; }
+#steps li.current { color:#000; }
+fieldset { border:none; width:280px; }
+legend { font-size:18px; font-weight:bold; color:#f00; }
+label { display:block; margin-top:10px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" src="js/formToWizard.js"></script>
+<script type="text/javascript">
+$(function () {
+  $('#fm').formToWizard({ submitButton: 'btnSubmit' });
+});
+</script>
+</head>
+<body>
+<form id="fm" action="">
+<fieldset>
+  <legend>購入者情報</legend>
+  <label for="name">氏名</label>
+  <input id="name" type="text" size="30" />
+  <label for="email">メールアドレス</label>
+  <input id="email" type="text" />
+  <label for="goods">商品名</label>
+  <input id="goods" type="text" />
+</fieldset>
+<fieldset>
+  <legend>商品について</legend>
+  <label for="know">購入の動機</label>
+  <input type="radio" name="know" value="site" />Webサイト
+  <input type="radio" name="know" value="news" />メール
+  <input type="radio" name="know" value="ad" />広告
+  <input type="radio" name="know" value="friend" />紹介
+  <input type="radio" name="know" value="other" />その他
+  <label for="contents">おいしさ</label>
+  <input type="radio" name="taste" value="good" />おいしい
+  <input type="radio" name="taste" value="-" />ふつう
+  <input type="radio" name="taste" value="bad" />まずい
+  <label for="quantity">分量</label>
+  <input type="radio" name="quantity" value="good" />多い
+  <input type="radio" name="quantity" value="-" />ふつう
+  <input type="radio" name="quantity" value="bad" />少ない
+</fieldset>
+<fieldset>
+  <legend>総合評価</legend>
+  <label for="score">満足度（100点満点）</label>
+  <input id="score" type="text" size="3" />点
+  <label for="memo">ご意見ご感想</label>
+  <textarea name="memo" cols="50" rows="8"></textarea>
+</fieldset>
+<p>
+  <input id="btnSubmit" type="button" value="送信" />
+</p>
+</form>
+</body>
+</html>

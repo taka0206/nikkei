@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Resizable</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style type="text/css">
+.thumb { width: 64px; height: 48px; padding: 10px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('.thumb').resizable({
+    animate: true,
+    ghost: true
+  });
+});
+</script>
+</head>
+<body>
+<div id="container">
+  <img src="images/01.jpg" class="thumb" />
+  <img src="images/02.jpg" class="thumb" />
+  <img src="images/03.jpg" class="thumb" />
+</div>
+</body>
+</html>

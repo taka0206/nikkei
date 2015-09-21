@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>buster.jsテスト結果</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="http://cdn.busterjs.org/releases/latest/buster-test.js"></script>
+    <script type="text/javascript">
+    <!--
+    var fizzbuzz = function(n){
+      if (n > 1)
+        fizzbuzz(n-1);
+      if (n % 3 == 0 && n % 5 == 0)
+        return "Fizz,Buzz";
+      else if (n % 3 == 0)
+        return "Fizz";
+      else if (n % 5 == 0)
+        return "Buzz";
+      else
+        return n;
+    }
+    -->
+    </script>
+    <script type="text/javascript">
+    <!--
+    // busterのassert関数の読み込み
+    var assert = buster.assert;
+    // テスト実行
+    buster.testCase("#fizzbuzz()", {
+      "引数が3の場合はFizz" : function(){
+          assert.equals("Fizz", fizzbuzz(3));
+      },
+      "引数3または5の倍数以外は、数字" : function(){
+          refute.equals("Fizz", fizzbuzz(1));
+          refute.equals("Buzz", fizzbuzz(2));
+          refute.equals("Fizz,Buzz", fizzbuzz(4));
+      }
+    });
+
+    // BDDで記述 
+    // BDDで記述ができるように処理を開始
+    buster.spec.expose();
+    // テスト実行 
+    describe("fizzbuzzの動作確認", function () {
+      it("Buzzを取得する", function () {
+          assert.equals("Buzz", fizzbuzz(5));
+      });
+
+      it("Fizz,Buzzを取得する", function () {
+          assert.equals("Fizz,Buzz", fizzbuzz(15));
+      });
+    });
+    -->
+    </script>
+  </body>
+</html>

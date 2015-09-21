@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Gmap3</title>
+<script type="text/javascript"
+  src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" src="js/gmap3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        var current = [ pos.coords.latitude, pos.coords.longitude ];
+        $('#map').gmap3({
+          map:{
+            options: {
+              center: current,
+              zoom: 10
+            }
+          },
+          marker: {
+            values: [
+              { latLng: current, data: '現在地' },
+              { latLng: [35.71007, 139.80948], data: 'スカイツリー' },
+              { latLng: [35.634629, 139.881408], data: 'ディズニーランド' }
+            ],
+            events:{
+              mouseover: function(marker, event, context){
+                var map = $(this).gmap3('get');
+                var win = $(this).gmap3({ get: {name: 'infowindow' }});
+                if (win){
+                  win.open(map, marker);
+                  win.setContent(context.data);
+                } else {
+                  $(this).gmap3({
+                    infowindow: {
+                      anchor: marker,
+                      options: { content: context.data }
+                    }
+                  });
+                }
+              }
+            }
+          },
+          polyline: {
+            options: {
+              strokeColor: '#f00',
+              strokeOpacity: 1.0,
+              strokeWeight: 3,
+              path: [
+                current,
+                [35.71007, 139.80948],
+                [35.634629, 139.881408]
+              ]
+            }
+          },
+        });
+      }
+    );
+  } else {
+    alert('ブラウザがGeolocation APIに対応していません。');
+  }
+});
+</script>
+</head>
+<body>
+<div id="map" style="width:500px;height:400px;"></div>
+</body>
+</html>

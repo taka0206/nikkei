@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- raphaelライブラリをインポート -->
+  <script type="text/javascript" src="js/raphael-min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+
+    // 初期化（1）
+    var paper = Raphael(10, 10, 300, 200);
+
+    // 四角形（2）
+    var c = paper.rect(40, 40, 50, 50, 10);
+
+    // 円
+    var circle = paper.circle(200, 100, 80);
+
+    // スタイルの設定（3）
+    circle.attr("stroke", "black"); // 円弧の色
+    circle.attr("fill", "red");     // 塗りつぶす色
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>linq.js sample</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- linq.jsをインポート -->
+  <script type="text/javascript" src="js/linq.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // 処理対象コレクション
+      var source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      $("#source").text(source);
+
+      // (1) Enumerable型に変換
+      var enumerable = Enumerable.from(source);
+
+      // (2) Enumerable型、Enumerator型の動作原理
+      var s = "";
+      var enumerator = enumerable.getEnumerator();
+      while (enumerator.moveNext()) {
+        if (s) {
+          s += ":";
+        }
+        s += enumerator.current();
+      }
+      $("#enumerable").text(s);
+
+      // (3) selectメソッド
+      var squares = enumerable.select(function (x) { return x * x; });
+      $("#select").text(squares.toArray());
+
+      // (4) whereメソッド
+      var evens = enumerable.where(function (x) { return x % 2 == 0; });
+      $("#where").text(evens.toArray());
+
+      // (5) anyメソッド
+      var anyOdd = enumerable.any(function (x) { return x % 2 != 0; });
+      $("#any").text(anyOdd);
+
+      // (6) allメソッド
+      var allLessThanEqualTen = enumerable.all(function (x) { return x <= 10; });
+      $("#all").text(allLessThanEqualTen);
+
+      // (7) sumメソッド
+      var sum = enumerable.sum();
+      $("#sum").text(sum);
+
+      // (8) foreachメソッド
+      enumerable.forEach(function (x) {
+        $("<li>").text(x).appendTo("#foreach");
+      });
+
+      // (9) メソッドチェーン
+      var chainedResult =
+        enumerable
+          .where(function (x) { return x % 2 == 0; })
+          .select(function (x) { return x * x; })
+          .sum();
+      $("#chain").text(chainedResult);
+    });
+  </script>
+</head>
+<body>
+  <div>source : <span id="source"></span></div>
+  <div>enumerable : <span id="enumerable"></span></div>
+  <div>select : <span id="select"></span></div>
+  <div>where : <span id="where"></span></div>
+  <div>any : <span id="any"></span></div>
+  <div>all : <span id="all"></span></div>
+  <div>sum : <span id="sum"></span></div>
+  <div>foreach :<ul id="foreach"></ul></div>
+  <div>chain : <span id="chain"></span></div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/mocha.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript" src="js/expect.js"></script>
+  <script type="text/javascript" src="js/mocha.js"></script>
+  <script type="text/javascript" src="js/sinon-1.5.0.js"></script>
+  <script type="text/javascript">
+  <!--
+  mocha.setup('tdd');
+  $(function() {
+    mocha
+      .globals([ 'script*' ])
+      .run();
+  });
+  
+  /**
+  * 時間を偽装してテストをする場合
+  */
+  // パスタを茹でるキッチンタイマー。7分経過したかチェック
+  var PastaTimer = function() {
+    this.startDate = new Date();
+  };
+  PastaTimer.prototype.pastaOK = function(){
+    var now = new Date();
+    if ((now.getTime() - this.startDate.getTime()) >= 7 * 60 * 1 ) {
+      // 7分経過していたらtrueを返す
+      return true;
+    }
+    return false;
+  }
+  
+  // テストコード
+  suite('パスタは茹で上がりましたか？', function(){
+    var clock, timer;
+    
+    setup(function(){
+      clock = sinon.useFakeTimers();
+      timer = new PastaTimer();
+    });
+    teardown(function() {
+      clock.restore();
+    });
+    
+    suite('#pastaOK()', function(){
+      test('7分経ってません', function(){
+        expect(timer.pastaOK()).to.eql(false);
+      });
+      test('7分経ちました！', function(){
+        // 7分進めます
+        clock.tick(7 * 60 * 1);
+        expect(timer.pastaOK()).to.eql(true);
+      });
+    });
+  });
+  
+  /**
+  * メソッドを偽装（スタブ）してテストをする場合
+  */
+  // データを取得するModel
+  var UsersModel = function(){}
+  UsersModel.prototype.getData = function(id){
+    // DBからユーザを取得するロジック
+    // ここでは詳細は省略します
+    return {id:1, name:'Yoshihiro Yamada'};
+  }
+  // ユーザ名を取得する
+  UsersModel.prototype.getName = function(id){
+    return this.getData(id).name;
+  }
+  
+  // テストコード
+  suite('取得データをスタブデータにしてテストを行う', function(){
+    var users;
+    
+    setup(function(){
+      users = new UsersModel();
+    });
+    
+    suite('#getData()', function(){
+      test('テストデータでの確認', function(){
+        // 必ず特定のデータを返すようにスタブを固定する
+        var callback = sinon.stub().returns({id:2, name: 'Tsuyoshi Yasunishi'});
+        users.getData = callback;
+        expect(users.getName(2)).to.eql('Tsuyoshi Yasunishi');
+      });
+      test('getData関数が呼ばれているか確認', function(){
+        // 関数をspyで置き換える
+        var spy = sinon.spy(users, 'getData');
+        users.getName(2);
+        // 呼び出されたかどうか確認
+        expect(spy.called).to.eql(true);;
+        // 引数が"2"で呼び出されたか確認
+        expect(spy.calledWith(2)).to.eql(true);;
+        // その後の処理に影響しないようにspyをリセットしておく
+        spy.reset();
+      });
+    });
+  });
+  
+  /**
+   * Ajax通信を偽装してテストをする場合
+   */
+  var getBooks = function(callback) {
+    jQuery.ajax({
+       url: "booksdata.json",
+       success: function (data) {
+         callback(data);
+       }
+     });
+  };
+  
+  // テストコード
+  suite('Ajax通信を偽装してテストを行う', function(){
+    var xhr, requests;
+    
+    setup(function(){
+      // ajax処理の偽装
+      xhr = sinon.useFakeXMLHttpRequest();
+      requests = [];
+      xhr.onCreate = function (req) { requests.push(req); };
+    });
+    teardown(function() {
+      xhr.restore();
+    });
+    
+    suite('#getBooks()', function(){
+      test('テストデータでの確認', function(){
+        // Ajaxのレスポンスを指定してテストを行う
+        var callback = sinon.spy();
+        getBooks(callback);
+        // レスポンスの偽装
+        requests[0].respond(200, {"Content-Type": "application/json"}, '[{"books":[{"name": "test"}]}]');
+        // レスポンスのJSONが想定通りに来ているか確認
+        expect(callback.calledWith([{"books":[{"name": "test"}]}])).to.eql(true);
+      });
+    });
+  });
+  -->
+  </script>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+</html>

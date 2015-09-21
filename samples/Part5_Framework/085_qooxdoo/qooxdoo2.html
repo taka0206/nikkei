@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- qooxdooライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://cdnjs.cloudflare.com/ajax/libs/qooxdoo/2.1/q.min.js">
+  </script>
+
+  <script type="text/javascript">
+
+    q.ready(function() {
+
+      // ボタンクリックで実行される
+      q("#btn").on("click", function() {
+
+        // 現在地の取得
+        navigator.geolocation.getCurrentPosition(getLocation);
+      });
+    });
+
+    // 位置情報を取得できたら実行される
+    var getLocation = function(position) {
+
+      // 緯度
+      lat = position.coords.latitude;
+      // 経度
+      lon = position.coords.longitude;
+
+      q("#result").append("緯度：" + lat + "<br />")
+      q("#result").append("経度：" + lon + "<br /><hr />")
+
+      // 最寄駅情報取得APIのURLをセットする
+      var url = "http://express.heartrails.com/api/json?"
+                  + "method=getStations"
+                  + "&x=" + lon
+                  + "&y=" + lat;
+
+      // jsonpオブジェクトの生成
+      var req = q.io.jsonp(
+                  url,
+                  {
+                    // コールバック関数のパラメータ
+                    callbackParam:"jsonp",
+                    // コールバック関数名
+                    callbackName: "nearStation"
+                  }
+                );
+
+      // リクエストの実行
+      req.send();
+    }
+
+    // JSONPのコールバック関数
+    var nearStation = function(data) {
+
+      // 取得した配列を列挙する
+      data.response.station.forEach(
+
+        function(element) {
+
+          q("#result").append(
+            "路線名：" + element.line + "<br />");
+
+          q("#result").append(
+            "駅名：" + element.name + "<br />");
+
+          q("#result").append(
+            "距離：" + element.distance + "<br /><hr />");
+        }
+      );
+    }
+  </script>
+</head>
+<body>
+  <button id="btn">現在地からの最寄り駅を表示します</button>
+  <br /><br />
+  <div id="result"></div>
+</body>
+</html>

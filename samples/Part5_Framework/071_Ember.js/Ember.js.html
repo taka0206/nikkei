@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>書籍紹介</title>
+  <!--ember.jsをインポート-->
+  <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script src="js/handlebars-1.0.0.beta.6.js"></script>
+  <script src="js/ember-1.0.0-pre.2.min.js"></script>
+  </head>
+  <!-- HTMLテンプレート部分 -->
+  <script type="text/x-handlebars" data-template-name="application">
+  <h1>書籍一覧</h1>
+  <div>
+    <table border="1">
+    <tr>
+      <td>名称</td>
+      <td>価格</td>
+    </tr>
+    <!-- ループを行い、本を表示する -->
+    {{#each App.ApplicationController}}
+    <tr>
+      <td>{{name}}</td>
+      <td>定価{{price}}円</td>
+    </tr>
+    {{/each}}
+    </table>
+  </div>
+  </script>
+  <body>
+  </body>
+<script type="text/javascript">
+<!--
+// Emberのアプリケーションオブジェクトを作成
+var App = Ember.Application.create();
+
+// 配列のデータを持つコントローラーを作成
+App.ApplicationController = Ember.ArrayController.create();
+
+// どのテンプレートに適用するかを指定
+App.ApplicationView = Ember.View.extend({
+  templateName: 'application'
+});
+
+// 書籍のデータをバインド
+App.ApplicationController.set('content', [{
+    name: 'アプリを作ろう！　Android入門 ～ゼロから学ぶアプリの作成から公開まで',
+    price : 1995
+  },
+  {
+    name: 'TECHNICAL MASTER　はじめてのJSP＆サーブレット　Eclipse 3.7 Indigo＋Tomcat 7対応版',
+    price : 2730
+  },
+  {
+    name: 'Windows Azure Platform開発入門',
+    price : 3990
+  }]);
+
+// 表示処理開始
+App.initialize();
+-->
+</script>
+</html>

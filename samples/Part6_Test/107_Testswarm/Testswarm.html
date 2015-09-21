@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <link href="css/qunit.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/qunit.js"></script>
+  <script src="http://testswarm/js/inject.js"></script>
+  <script type="text/javascript">
+  <!--
+  var fizzbuzz = function(n){
+    if (n > 1)
+      fizzbuzz(n-1);
+    if (n % 3 == 0 && n % 5 == 0)
+      return "Fizz,Buzz";
+    else if (n % 3 == 0)
+      return "Fizz";
+    else if (n % 5 == 0)
+      return "Buzz";
+    else
+      return n;
+    }
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+  $(function(){
+    test("FizzBuzzのテスト", function () {
+      ok(fizzbuzz(3) === "Fizz", "3の場合はFizzが返ってくる");
+      ok(fizzbuzz(1) !== "Fizz", "3と5の倍数以外は、数字が返ってくる");
+      ok(fizzbuzz(1) !== "Buzz", "3と5の倍数以外は、数字が返ってくる");
+      ok(fizzbuzz(1) !== "Fizz,Buzz", "3と5の倍数以外は、数字が返ってくる");
+      ok(fizzbuzz(5) === "Buzz", "5の場合はBuzzが返ってくる");
+      ok(fizzbuzz(15) === "Fizz,Buzz", "15の場合はFizz,Buzzが返ってくる");
+    });
+  });
+  -->
+  </script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+
+	<!-- Zepto.jsライブラリをインポート -->
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+			$('#sample').html('だんだん大きくなります').animate({
+				fontSize: '30px'
+			}, 2000);
+
+		});
+
+	</script>
+</head>
+<body>
+<div id="sample"></div>
+</body>
+</html>

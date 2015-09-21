@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Backbone.js Collection sample</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript" src="js/underscore-1.4.3.js"></script>
+  <script type="text/javascript" src="js/backbone-0.9.9.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // Modelクラス定義
+      var Person = Backbone.Model.extend({})
+      // (1) Collection定義
+      var People = Backbone.Collection.extend({ model: Person });
+
+      // (2) Collectionの内容表示用メソッド群定義
+      // Collectionの内容表示
+      function showPeople(people) {
+        // peopleに含まれるPersonをリスト表示
+        var $people = $("#people");
+        $people.empty();
+        people.each(function (person) {
+          addPerson(person);
+        });
+      }
+
+      // 人追加
+      function addPerson(person) {
+        var $people = $("#people");
+        $("<li>")
+          .text("ID: " + person.get("id")
+            + ", 名前: " + person.get("name")
+            + ", 年齢: " + person.get("age")
+          )
+          .attr("id", "person-" + person.get("id"))
+          .appendTo($people);
+      }
+
+      // 人変更
+      function changePerson(person) {
+        var $person = $("#person-" + person.get("id"));
+        $person.text("ID: " + person.get("id")
+          + ", 名前: " + person.get("name")
+          + ", 年齢: " + person.get("age")
+        );
+      }
+
+      // 人削除
+      function removePerson(person) {
+        var $person = $("#person-" + person.get("id"));
+        $person.remove();
+      }
+
+      // (3) Collectionクラスオブジェクト作成
+      var people = new People([
+        new Person({ id: 1, name: "太郎", age: 20 }),
+        new Person({ id: 2, name: "次郎", age: 18 }),
+        new Person({ id: 3, name: "三郎", age: 15 })
+      ]);
+
+      // (4) Collectionクラスのイベント購読
+      people.bind("reset", showPeople);
+      people.bind("add", addPerson);
+      people.bind("change", changePerson);
+      people.bind("remove", removePerson);
+
+      // (5) Collectionへの項目追加
+      $("#add").click(function () {
+        people.add(new Person({
+          id: $("#id").val(),
+          name: $("#name").val(),
+          age: $("#age").val(),
+        }));
+      });
+
+      // (6) Collectionの項目変更
+      $("#update").click(function () {
+        var person = people.get($("#id").val());
+        person.set("name", $("#name").val());
+        person.set("age", $("#age").val());
+      });
+
+      // (7) Collectionの項目削除
+      $("#remove").click(function () {
+        people.remove($("#id").val());
+      });
+
+      // (8) Collectionのリセット
+      $("#initialize").click(function () {
+        people.reset([
+          new Person({ id: 1, name: "太郎", age: 20 }),
+          new Person({ id: 2, name: "次郎", age: 18 }),
+          new Person({ id: 3, name: "三郎", age: 15 })
+        ]);
+      });
+
+      showPeople(people);
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <td>
+          <input type="text" id="id" /></td>
+      </tr>
+      <tr>
+        <th>名前</th>
+        <td>
+          <input type="text" id="name" /></td>
+      </tr>
+      <tr>
+        <th>年齢</th>
+        <td>
+          <input type="text" id="age" /></td>
+      </tr>
+    </table>
+    <button id="add">追加</button>
+    <button id="update">変更</button>
+    <button id="remove">削除</button>
+  </div>
+  <div>
+    <button id="initialize">初期化</button>
+  </div>
+  <div>
+    <ul id="people">
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<!-- uploadifyの標準スタイルをインポート -->
+	<link rel=stylesheet href="css/uploadify.css" type="text/css" media="screen">
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+	<!-- uploadifyライブラリをインポート -->
+	<script type="text/javascript" src="js/jquery.uploadify.min.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+			$('#file_upload1').uploadify({
+				'buttonText' : 'ファイルのアップロード...',
+				'width'    : '200',
+				'swf'      : 'uploadify/uploadify.swf',
+				'uploader' : 'uploadify/uploadify.php',
+
+				'onUploadSuccess' : function(file, data) {
+					alert(file.name+'のアップロードが'+data+'しました');
+				}
+			});
+
+			$('#file_upload2').uploadify({
+				'buttonText' : 'ファイルの選択...',
+				'width'    : '200',
+				'swf'      : 'uploadify/uploadify.swf',
+				'uploader' : 'uploadify/uploadify.php',
+				'auto'     : false
+			});
+
+		});
+
+	</script>
+</head>
+<body>
+
+・ファイル選択後、すぐにアップロード
+<input type="file" name="file_upload1" id="file_upload1" multiple="true" />
+<hr />
+・ファイル選択後、「ファイルのアップロード」のクリックでアップロード
+<input type="file" name="file_upload2" id="file_upload2" multiple="true" />
+<p><a href="javascript:$('#file_upload2').uploadify('upload','*')">ファイルのアップロード</a></p>
+
+
+</body>
+</html>

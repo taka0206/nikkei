@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI TabView、History、ImageLoaderのサンプル</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssbase/cssbase-min.css">
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<!--begin custom header content for this example-->
+<style>
+  #demo img {
+    border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+<div id="demo">
+  <ul>
+    <!-- タブ（クリックして切り替える）部分。hrefで指定しているURLハッシュは、表示するコンテンツのidと紐付いている -->
+    <li><a href="#Img01" id="tabImg01">Img01</a></li>
+    <li><a href="#Img02" id="tabImg02">Img02</a></li>
+    <li><a href="#Img03" id="tabImg03">Img03</a></li>
+  </ul>
+  <div>
+    <!-- 表示するコンテンツ。id名は、タブのhrefに指定しているURLハッシュの名前と紐付いている -->
+    <div id="Img01">
+      <a href="img/img1.jpg">
+         <img src="img/img1.jpg" alt="Img01">
+      </a>
+    </div>
+    <div id="Img02">
+      <a href="img/img2.jpg">
+         <img src="img/img2.jpg" alt="Img02">
+      </a>
+    </div>
+    <div id="Img03">
+      <a href="img/img3.jpg">
+         <img src="img/img3.jpg" alt="Img03">
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+// モジュールの読み込み
+YUI().use("history", "tabview", function (Y) {
+  var history = new Y.HistoryHash(),
+      tabview = new Y.TabView({srcNode: '#demo'});
+ 
+  // TabViewウィジェットを表示する
+  tabview.render();
+ 
+  // 初期表示時、URLハッシュに指定されているタブを初期選択する
+  tabview.selectChild(history.get('tab') || 0);
+ 
+  // タブをクリックした際の挙動を記述する
+  tabview.after('selectionChange', function (e) {
+    // クリックしたタブの情報を画面遷移の履歴に残しておく
+    history.addValue('tab', e.newVal.get('index') || null);
+  });
+ 
+  // ブラウザの戻るボタンや進むボタンが押された際に呼び出されるイベント
+  Y.on('history:change', function (e) {
+    // URLハッシュ（#以降）が変更されたのがきっかけでこのイベントが呼び出されたか？
+    if (e.src === Y.HistoryHash.SRC_HASH) {
+      if (e.changed.tab) {
+        // タブが選択されているため、そのタブを選択する
+        tabview.selectChild(e.changed.tab.newVal);
+      } else if (e.removed.tab) {
+        // タブの選択が存在しないため、最初のタブを選択する
+        tabview.selectChild(0);
+      }
+     }
+  });
+});
+</script>
+</html>

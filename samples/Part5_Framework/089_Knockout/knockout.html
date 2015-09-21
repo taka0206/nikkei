@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Gist検索</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- Knockout.jsをインポート -->
+  <script type="text/javascript" src="js/knockout-2.2.0.js"></script>
+  <!-- Modelをインポート -->
+  <script type="text/javascript" src="js/appmodel.js"></script>
+  <!-- ViewModelをインポート -->
+  <script type="text/javascript" src="js/gistviewmodel.js"></script>
+  <script type="text/javascript" src="js/appviewmodel.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (1) データバインド有効化
+      var model = new AppModel();
+      var viewModel = new AppViewModel(model);
+      ko.applyBindings(viewModel);
+    });
+  </script>
+</head>
+<body>
+  <!-- (2) Viewの定義 -->
+  <div>
+    <header>
+      <h1>Gist検索</h1>
+    </header>
+    <!-- 検索条件 -->
+    <section>
+      ユーザー
+      <input type="text" data-bind="value: user" />
+      <button data-bind="click: search">検索</button>
+    </section>
+    <!-- 検索結果 -->
+    <section>
+      <ol data-bind="foreach: gists">
+        <li>
+          <a data-bind="attr: { href: html_url }, text: text"
+            target="_blank"></a>
+        </li>
+      </ol>
+    </section>
+  </div>
+</body>
+</html>

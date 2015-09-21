@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- uploadifyの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="css/uploadify.css"/>
+
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- uploadifyライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.uploadify.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+      $('#file_upload1').uploadify({
+        buttonText : 'ファイルのアップロード...',
+        width    : '200',
+        swf      : 'uploadify/uploadify.swf',
+        uploader : 'uploadify/uploadify.php',
+
+        onUploadSuccess : function(file, data) {
+          alert(file.name+'のアップロードが'+data+'しました');
+        }
+      });
+    });
+
+  </script>
+</head>
+<body>
+
+・ファイル選択後、すぐにアップロード
+<input type="file" name="file_upload1"
+  id="file_upload1" multiple="true" />
+
+</body>
+</html>

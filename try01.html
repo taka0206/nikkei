@@ -5,22 +5,18 @@
     <meta charset="utf-8" />
     <title>タイトル</title>
     <script>
-    	var output = "";
-    	var counter = 0;
-
     	function showMessage() {
-    		var input = document.getElementById("input").value;
-    		output += input + "<br>";
-    		document.getElementById("output").innerHTML = output;
-    		counter++;
-    		if (counter < 10) setTimeout(showMessage, 1000);
+    		var canvas = document.getElementById("canvas");
+    		var context = canvas.getContext("2d");
+    		context.beginPath();
+    		context.arc(50, 100, 50, 0, Math.PI * 2, false);
+    		context.fill();
     	}
     </script>
 </head>
 <body>
-	<input id="input" />
 	<input type="button" value="ボタン"
-		onclick="showMessage()" />
-	<div id="output"/>
+		onclick="showMessage()" /><br />
+	<canvas id="canvas" width="800" height="200" style = "background-color: yellowgreen"/>
 </body>
 </html>

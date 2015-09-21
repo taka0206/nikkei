@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- jQ.Mobiの標準スタイルをインポート（1） -->
+  <link rel="stylesheet" type="text/css" href="http://cdn.jqmobi.com/1.11/jq.ui.css" />
+  <link rel="stylesheet" type="text/css" href="http://cdn.jqmobi.com/1.11/icons.css" />
+
+  <!-- jQ.Mobiライブラリをインポート -->
+  <script type="text/javascript" charset="utf-8" src="http://cdn.jqmobi.com/1.11/jq.mobi.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="http://cdn.jqmobi.com/1.11/jq.ui.min.js"></script>
+
+  <script type="text/javascript">
+    $.ui.ready(function () {
+      $.ui.backButtonText = "Back";
+
+
+      // page2に遷移完了した時に実行される（5）
+      $("#page2").bind("loadpanel", function () {
+        alert("遷移完了");
+      });
+
+      // 右向きスワイプした時に実行される
+      $("#page2").bind("swipeRight", function () {
+        alert("右向きのスワイプ");
+      });
+
+    });
+
+
+  </script>
+</head>
+<body>
+    <div id="jQUi">
+
+      <!-- ヘッダー -->
+      <div id="header">
+        <a href="javascript:$.ui.toggleSideMenu()" class="button" style="float:right">メニュー</a>
+      </div>
+
+      <div id="content">
+
+        <!-- トップページにはselected="true"を指定する -->
+        <div title="Welcome" id="main" class="panel" selected="true">
+          トップページです。
+          <ul>
+            <li><a href="#page1" data-transition="pop">コンテンツ1</a></li>
+            <li><a href="#page2">コンテンツ2</a></li>
+          </ul>
+         </div>
+
+        <div title="ブラウザ情報" id="page1" class="panel">
+            <h2>ブラウザ情報</h2>
+            $.os.webkit  = <script>document.write($.os.webkit);</script><br />
+            $.os.android = <script>document.write($.os.android);</script><br />
+            $.os.ipad = <script>document.write($.os.ipad);</script><br />
+            $.os.iphone = <script>document.write($.os.iphone);</script><br />
+            $.os.ios = <script>document.write($.os.ios);</script><br />
+            $.os.webos = <script>document.write($.os.webos);</script><br />
+            $.os.touchpad = <script>document.write($.os.touchpad);</script><br />
+            $.os.blackberry = <script>document.write($.os.blackberry);</script><br />
+            $.os.opera = <script>document.write($.os.opera);</script><br />
+        </div>
+
+        <div title="コンテンツ2" id="page2" class="panel">
+          2ページです。
+        </div>
+
+      </div>
+
+      <!-- フッター -->
+      <div id="navbar">
+        <div class="horzRule"></div> <!-- 水平の罫線 -->
+        <a href="#main" id="navbar_home" class="icon home">home</a>
+      </div>
+
+      <!-- サイドメニュー -->
+      <nav>
+        <div class="title">メニュー</div>
+        <ul>
+          <li class="icon home mini">
+            <a href="#main">トップページ</a>
+            <a href="#page1">コンテンツ１</a>
+            <a href="#page2">コンテンツ２</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </body>
+</html>
+

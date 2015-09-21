@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Uniformの標準スタイルをインポート（1） -->
+  <!-- 
+  <link rel=stylesheet
+    href="css/uniform.agent.css" type="text/css" />
+  <link rel=stylesheet
+    href="css/uniform.aristo.css" type="text/css" />
+   -->
+  <link rel=stylesheet
+    href="css/uniform.default.css" type="text/css" />
+
+  <!-- サンプルのスタイルをインポート（2） -->
+  <link rel=stylesheet href="css/sample.css" type="text/css" />
+
+  <!-- jQueryライブラリをインポート（3） -->
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+ 
+  <!-- Uniformライブラリをインポート（4） -->
+  <script type="text/javascript"
+    src="js/jquery.uniform.min.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+       // uniformオブジェクトの指定（5）
+       $("input, textarea, select, button").uniform();
+    });
+  </script>
+</head>
+<body>
+  <form>
+    <ul>
+      <li>
+        <label>テキストエリア:</label>
+        <textarea cols="40" rows="5"></textarea>
+      </li>
+      <li>
+        <label>テキスト:</label><input type="text" size="40"/>
+      </li>
+      <li>
+        <label>select:</label>
+        <select>
+          <option>Google</option>
+          <option>Twitter</option>
+        </select>
+      </li>
+      <li>
+        <label><input type="radio" name="radio" />
+          ラジオボタン１</label>
+        <label><input type="radio" name="radio" />
+          ラジオボタン２</label>
+      </li>
+      <li>
+        <label><input type="checkbox" />
+          チェックボックス</label>
+      </li>
+      <li>
+        <label>ファイル選択:</label><input type="file" />
+      </li>
+      <li>
+        <input type="submit" />
+        <input type="reset" />
+        <button>ボタン</button>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>

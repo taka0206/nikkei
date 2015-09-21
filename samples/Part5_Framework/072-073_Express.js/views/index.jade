@@ -1,0 +1,17 @@
+// レイアウトファイルを読み込む
+extends layout
+
+// 本体
+block content
+  h1= title
+  // テーブルタグ開始
+  table(border='1')
+    tr
+      td 名称
+      td 価格
+    // JavaScriptから流し込んだパラメータ（books）をループする
+    each book in books
+      tr
+        // ループしているbooksの1行から値を流しこむ
+        td #{book.name}
+        td 定価#{book.price}円

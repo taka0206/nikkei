@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- uploadifyの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="css/uploadify.css"/>
+
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- uploadifyライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.uploadify.min.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      $('#file_upload2').uploadify({
+        'buttonText' : 'ファイルの選択...',
+        'width'    : '200',
+        'swf'      : 'uploadify/uploadify.swf',
+        'uploader' : 'uploadify/uploadify.php',
+        'auto'     : false
+      });
+
+      $('#upload').click(function(){
+        $('#file_upload2').uploadify('upload','*');
+        return false;
+      })
+
+    });
+
+  </script>
+</head>
+<body>
+
+  ・ファイル選択後、「ファイルのアップロード」でアップロード
+  <input type="file" name="file_upload2"
+    id="file_upload2" multiple="true" />
+  <p>
+    <a href="#" id="upload">ファイルのアップロード</a>
+  </p>
+
+</body>
+</html>
+
+

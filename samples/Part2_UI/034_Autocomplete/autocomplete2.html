@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Autocomplete</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  var data = [
+    { label: 'さつまいも', desc:'痩せた土地でも育ちます。' },
+    { label: 'たまねぎ', desc:'熱を加えると甘くなります。' },
+    { label: 'じゃがいも', desc:'芽には、ソラニンという有害物質が含まれます。' },
+    { label: 'きゃべつ', desc:'生でも食べられます。' },
+    { label: 'だいこん', desc:'葉っぱに近い方が辛みが少ないです。' },
+    { label: 'ごぼう', desc:'酢水につけてアク抜きをします。' },
+    { label: 'はくさい', desc:'新聞紙で包んでおくと1か月くらい持ちます。' },
+    { label: 'こまつな', desc:'ビタミンB2がたくさん含まれています。' },
+    { label: 'ほうれんそう', desc:'一つまみの塩で下ゆでして使うとアクが抜けます。' },
+    { label: 'ねぎ', desc:'泥付きの場合、日陰の土の中で保存すると長持ちします。' },
+    { label: 'もも', desc:'甘くない場合は、コンフォートにするとおいしいです。' },
+    { label: 'さくらんぼ', desc:'山形県でたくさんとれます。' },
+    { label: 'いちじく', desc:'見た目が苦手な人もいます。' },
+    { label: 'なし', desc:'秋のくだものです。' },
+    { label: 'ぶどう', desc:'ワインの原材料にもなります' },
+    { label: 'みかん', desc:'ハウス栽培もされており、1年中売られています。' },
+    { label: 'りんご', desc:'青森産が有名です。' },
+    { label: 'いちご', desc:'家庭でも簡単に栽培できます。' },
+    { label: 'さんま', desc:'秋の魚の代表です。' },
+    { label: 'さば', desc:'味噌煮にするとおいしいです。' },
+    { label: 'いわし', desc:'安価で家計にやさしいお魚です。' },
+    { label: 'たい', desc:'お祝いごとの際に並びます。' },
+    { label: 'ほっけ', desc:'開いて干したものを焼くとおいしいです。' },
+    { label: 'まぐろ', desc:'お寿司屋さんで解体ショーを見ることもできます。' },
+    { label: 'さけ', desc:'塩焼きにしたり、お茶漬けにしてもおいしいです。' },
+    { label: 'かれい', desc:'体の右側に目が付いています。' },
+    { label: 'あじ', desc:'尾びれの方に「ぜいご」があります。' }
+  ];
+
+  $('#search').autocomplete({
+    source: data,
+    minLength: 2,
+    delay: 1000,
+    select: function (e, ui) {
+      if (ui.item) { $('#result').html(ui.item.desc); }
+    }
+  });
+});
+</script>
+</head>
+<body>
+<label for="search">食材: </label>
+<input id="search">
+<div id="result"></div>
+</body>
+</html>

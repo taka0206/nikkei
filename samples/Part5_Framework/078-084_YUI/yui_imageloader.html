@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI ImageLoaderのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<style>
+  #demo img {
+    border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+<div id="demo">
+  <h1>マウスオーバーで画像を表示する</h1>
+  <ul>
+    <li><a href="#Img01" id="tabImg01">Img01</a></li>
+    <li><a href="#Img02" id="tabImg02">Img02</a></li>
+  </ul>
+  <div>
+    <div id="Img01">
+      <img id="imgImg01">
+    </div>
+    <div id="Img02">
+      <img id="imgImg02">
+    </div>
+    <div id="Img03">
+      <img id="imgImg03">
+    </div>
+  </div>
+</div>
+</body>
+<script>
+// モジュールの読み込み
+YUI().use("imageloader", function (Y) {
+  // イメージの遅延表示
+  var firstTabGroup = new Y.ImgLoadGroup({});
+  // 1つめのタブをマウスオーバーしたら画像取得
+  firstTabGroup.addTrigger('#tabImg01', 'mouseover');
+  // 読み込む対象のDOMと画像を指定
+  firstTabGroup.registerImage({
+      domId: 'imgImg01', 
+      srcUrl: 'img/img1.jpg'
+  });
+  firstTabGroup.registerImage({
+      domId: 'imgImg03', 
+      srcUrl: 'img/img3.jpg'
+  });
+  
+  // 2つめの画像設定
+  var secondTabGroup = new Y.ImgLoadGroup({});
+  // 2つめのタブをマウスオーバーしたら画像取得
+  secondTabGroup.addTrigger('#tabImg02', 'mouseover');
+  // 読み込む対象のDOMと画像を指定
+  secondTabGroup.registerImage({
+      domId: 'imgImg02', 
+      srcUrl: 'img/img2.jpg'
+  });
+});
+</script>
+</html>

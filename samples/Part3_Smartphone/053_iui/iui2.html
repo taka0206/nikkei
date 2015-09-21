@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- viewportの指定 (1) -->
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+  <!-- iUIの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="iui/iui.css" />
+  <link rel="stylesheet" type="text/css"
+    title="Default" href="iui/t/default/default-theme.css" />
+  <link rel="stylesheet"
+    type="text/css" href="css/iui-panel-list.css" />
+
+  <!-- iUIのvideoプラグイン用スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="css/iui-video.css" />
+
+  <!-- iUIライブラリをインポート -->
+  <script type="application/x-javascript" src="iui/iui.js"></script>
+  <!-- iUIのvideoプラグインをインポート -->
+  <script type="application/x-javascript"
+    src="iui/iui-video-logger.js"></script>
+  <script type="application/x-javascript"
+    src="iui/iui-video.js"></script>
+</head>
+<body>
+  <div class="toolbar">
+    <h1 id="pageTitle"></h1>
+      <a id="backButton" class="button" href="#"></a>
+  </div>
+  <ul id="screen1" title="グループ化リスト" selected="true">
+    <li class="group">パーツ一覧</li>
+    <li><a href="#screen2">グループ化パネル</a></li>
+    <li><a href="#screen3">入力フォーム</a></li>
+    <li><a href="#dialog">ダイアログ</a></li>
+    <li><a href="#video">ビデオ</a></li>
+  </ul>
+
+  <div id="screen2" title="グループ化パネル" class="panel">
+    <fieldset>
+      <div class="row">
+        <p>Hello</p>
+      </div>
+      <div class="row">
+        <p>World</p>
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="screen3" title="入力フォーム" class="panel">
+    <form class="panel" name="form1"
+      action="#screen1" method="get">
+      <fieldset>
+        <div class="row">
+          <label>Login</label>
+          <input type="text" name="ident"
+            placeholder="ログイン名">
+        </div>
+        <div class="row">
+          <label>Password</label>
+          <input type="password" name="password"
+            placeholder="パスワード">
+        </div>
+      </fieldset>
+        <a class="redButton"
+          href="javascript:form1.submit()">ログイン</a>
+    </form>
+  </div>
+
+  <form id="dialog" title="ダイアログ"
+    class="dialog" name="form2" action="#screen1">
+    <fieldset>
+      <h1>パスワード確認</h1>
+      <a class="button leftButton" type="cancel">Cancel</a>
+      <a class="button" type="submit">OK</a>
+      <label>Password</label>
+      <input type="password"
+        name="password" placeholder="パスワード">
+   </fieldset>
+  </form>
+
+  <div id="video" title="video" class="panel">
+    <a href="sample.mp4" rel="iuiposter">
+      <img src="sample.jpg" width="320" height="200" />
+    </a>
+  </div>
+
+</body>
+</html>

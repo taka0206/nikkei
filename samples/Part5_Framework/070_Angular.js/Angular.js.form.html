@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+    <!--
+    function makeNameController($scope) {
+      $scope.last = "";
+      $scope.first = "";
+    }
+    -->
+    </script>
+  </head>
+  <body>
+    <div ng-controller="makeNameController">
+      <table>
+       <tr><td>ïcéö</td><td>ñºëO</td></tr>
+       <tr>
+         <td><input type="string" ng-model="last" required ></td>
+         <td><input type="string" ng-model="first" required ></td>
+       </tr>
+      </table>
+      <hr>
+      <b>ñºëO:</b>{{last}}Å@{{first}}
+    </div>
+  </body>
+</html>

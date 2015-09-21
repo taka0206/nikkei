@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>RxJS - DOMイベント処理</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- (1) RxJSをインポート -->
+  <script type="text/javascript" src="js/rx.js"></script>
+  <!-- (2) RxJSのjQuery拡張をインポート -->
+  <script type="text/javascript" src="js/rx.jquery.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (3) 身長、体重の変更イベントを元に、入力された値を返すObservableに変換する
+      var height = $("#height").changeAsObservable()
+        .select(function (x) { return x.target.value; });
+      var weight = $("#weight").changeAsObservable()
+        .select(function (x) { return x.target.value; });
+
+      // (4) 身長、体重のどちらかが変更されたら、身長、体重の値の組を返す
+      var bodyspec = height.combineLatest(weight, function (ht, wt) {
+        return { height_cm: ht, weight_kg: wt };
+      });
+
+      // (5) 身長、体重の変化を元にBMIを計算して表示する
+      bodyspec.subscribe(function (x) {
+        // 身長、体重からBMIを計算する
+        var height_m = x.height_cm * 0.01;
+        var bmi = x.weight_kg / (height_m * height_m);
+        // 小数点以下第2位で四捨五入する
+        var bmi_rounded = Math.round(bmi * 100) / 100;
+        // BMIを表示する
+        $("#bmi").text(bmi_rounded);
+      });
+    });
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>身長</th>
+      <td><input type="text" id="height" /> cm</td>
+    </tr>
+    <tr>
+      <th>体重</th>
+      <td><input type="text" id="weight" /> kg</td>
+    </tr>
+  </table>
+  <hr />
+  BMI : <span id="bmi"></span>
+</body>
+</html>

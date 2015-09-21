@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jqGridの標準スタイルをインポート -->
+  <link rel=stylesheet href="css/ui.jqgrid.css" type="text/css" />
+
+  <!-- jQuery UIの標準スタイルをインポート -->
+  <link rel=stylesheet 
+    href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"
+      type="text/css" />
+
+  <!-- jQueryライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+
+  <!-- jqGridライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/i18n/grid.locale-ja.js"></script>
+  <script type="text/javascript"
+    src="js/jquery.jqGrid.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+      var colModelSettings2= [
+        {name:"station_cd",width:50,align:"center"},
+        {name:"station_g_cd",hidden:true}, // 非表示
+        {name:"station_name",width:100,align:"center"},
+        {name:"lon",index:"lon",width:50,align:"center"},
+        {name:"lat",index:"lat",width:50,align:"center"}
+      ];
+
+      $.getJSON(
+        "sample.php",null,
+        function(result, status) {
+          $("#list2").jqGrid({
+            data:result,
+            datatype : "local",
+            colNames : ["駅コード","","駅名","緯度","経度"],
+            colModel : colModelSettings2,
+            rowNum : 10,                // 1ページの最大表示行
+            caption : "山手線",
+            height : 180,
+            width : 600,
+            pager : 'pager',            // フッター要素の指定
+            shrinkToFit : true
+          });
+        }
+      );
+    });
+  </script>
+</head>
+<body>
+  <table id="list2"></table> 
+  <div id="pager"></div> 
+</body>
+</html>

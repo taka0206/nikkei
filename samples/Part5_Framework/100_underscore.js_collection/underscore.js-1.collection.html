@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Underscore.js - collection sample</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- Underscore.jsをインポート -->
+  <script type="text/javascript" src="js/underscore-1.4.3.js"></script>
+  <!-- Underscore.js使用スクリプトをインポート -->
+  <script type="text/javascript" src="js/underscore-sample.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      doEach();
+      doMap();
+      doReduce();
+      doFilter();
+      doChain();
+    });
+  </script>
+</head>
+<body>
+  <div>
+    each :
+    <ul id="each"></ul>
+  </div>
+  <div>
+    map : 
+    <ul id="map"></ul>
+  </div>
+  <div>
+    sum : <span id="reduce"></span>
+  </div>
+  <div>
+    filter :
+    <ul id="filter"></ul>
+  </div>
+  <div>
+    chain :
+    <ul id="chain"></ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jqPlotの標準スタイルをインポート -->
+  <link rel=stylesheet
+    href="css/jquery.jqplot.min.css" type="text/css" />
+
+    <!--[if lt IE 9]>
+    <script language="javascript"
+      type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]-->
+
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+
+  <!-- jqPlotライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.jqplot.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.barRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+      var d3 =  [ ['1月', 6.0],  ['2月', 6.3],  ['3月', 9.4], ['4月', 15.1],
+                  ['5月', 19.7], ['6月', 23.5], ['7月', 27.4], ['8月', 28.8],
+                  ['9月', 25.0], ['10月', 19.0],['11月', 13.6], ['12月', 8.6] ];
+
+      var d4 =  [ ['1月', 45.4],  ['2月', 61.7],  ['3月', 104.2], ['4月', 103.8],
+                  ['5月', 145.5], ['6月', 184.5], ['7月', 157.0], ['8月', 90.9],
+                  ['9月', 160.7], ['10月', 112.3],['11月', 69.3], ['12月', 43.8] ];
+
+      // Y軸のメモリ設定
+      var yticks1 = [0, 100, 200, 300, 400, 500];
+      var yticks2 = [-20, -10, 0, 10, 20, 30, 40];
+
+      var options = { legend: {show: true},
+                      series: [
+                        { label: '平均降水量(mm)',
+                          yaxis: 'yaxis',
+                          renderer: $.jqplot.BarRenderer
+                        },
+                        { label: '平均気温(℃)',
+                          yaxis: 'y2axis'}
+                      ],
+                      axes: {
+                        xaxis: {  // X軸の設定
+                          renderer: $.jqplot.CategoryAxisRenderer
+                        },
+                      yaxis: {  // Y軸の設定（平均降水量）
+                          label: '平均降水量',
+                          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                          tickOptions : { formatString : '%d mm', showGridline: false },
+                          ticks: yticks1,
+                          max: 500,min: 0
+                        },
+                        y2axis: { // Y軸の設定（平均気温）
+                          label: '平均気温',
+                          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                          tickOptions : { formatString : '%d℃' },
+                          ticks: yticks2,
+                          max: 40, min: -20
+                        }
+                      }
+      };
+      $.jqplot( 'graph2', [ d4, d3 ], options);
+    });
+  </script>
+</head>
+<body>
+  <div id="graph2" style="width:800px;height:500px;"></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jqGridの標準スタイルをインポート -->
+  <link rel=stylesheet href="css/ui.jqgrid.css" type="text/css" />
+
+  <!-- jQuery UIの標準スタイルをインポート -->
+  <link rel=stylesheet 
+    href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"
+      type="text/css" />
+
+  <!-- jQueryライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+
+  <!-- jqGridライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/i18n/grid.locale-ja.js"></script>
+  <script type="text/javascript"
+    src="js/jquery.jqGrid.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+      // 表示データ
+      var data1 = [
+        {no:1,name:"小島",age:26,hobby:"読書"},
+        {no:2,name:"前田",age:20,hobby:"映画鑑賞"},
+        {no:3,name:"大島",age:20,hobby:"水泳"}
+      ];
+
+      // 列の設定
+      var colModelSettings1= [
+        {name:"no",width:50,align:"center"},
+        {name:"name",width:100},
+        {name:"age",width:50,align:"center"},
+        {name:"hobby",width:100}
+        ];
+
+      // テーブルの作成
+      $("#list1").jqGrid({
+        data:data1,                              // 表示データ
+        datatype : "local",
+        colNames : ["No.","名前","年齢","趣味"], // 列の表示名
+        colModel : colModelSettings1,            // 列ごとの設定
+        caption : "名簿",                 // グリッドのキャプション
+        height : 'auto',                         // 高さ
+        width : 500,                             // 幅
+        shrinkToFit : true  // 指定サイズにグリッドサイズを合わせる
+      });
+    });
+  </script>
+</head>
+<body>
+  <table id="list1"></table>
+</body>
+</html>

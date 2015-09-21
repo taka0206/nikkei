@@ -1,0 +1,12 @@
+<table border="1">
+<tr>
+  <td>名前</td>
+  <td>価格</td>
+</tr>
+<% for book in @books: %>
+<tr>
+  <td><%= book.name %></td>
+  <td>定価<%= book.price %>円</td>
+</tr>
+<% end %>
+</table>

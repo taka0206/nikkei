@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Plupload</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css"
+  href="js/jquery.ui.plupload/css/jquery.ui.plupload.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript" src="js/plupload.js"></script>
+<script type="text/javascript" src="js/plupload.html5.js"></script>
+<script type="text/javascript" src="js/plupload.flash.js"></script>
+<script type="text/javascript"
+  src="js/plupload.silverlight.js"></script>
+<script type="text/javascript" src="js/plupload.gears.js"></script>
+<script type="text/javascript"
+  src="js/plupload.browserplus.js"></script>
+<script type="text/javascript" src="js/plupload.html4.js"></script>
+<script type="text/javascript"
+  src="js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+<script type="text/javascript" src="js/i18n/ja.js"></script>
+<script type="text/javascript">
+$(function() {
+  $("#uploader").plupload({
+    runtimes: 'html5,flash,silverlight,gears,browserplus,html4',
+    url: 'upload.php',
+    max_file_size: '10mb',
+    max_file_count: 10,
+    unique_names: true,
+    resize: { width: 320, height: 240, quality: 90 },
+    filters: [
+      { title: 'Image files', extensions: 'jpg,gif,png' },
+      { title: "Text files", extensions: 'txt' }
+    ],
+    flash_swf_url : 'js/plupload.flash.swf',
+    silverlight_xap_url : 'js/plupload.silverlight.xap'
+  });
+});
+</script>
+</head>
+<body>
+<form  method="post" action="dump.php">
+<div id="uploader"></div>
+</form>
+</body>
+</html>

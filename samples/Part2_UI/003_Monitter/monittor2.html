@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Monitter Widgets</title>
+<link rel="stylesheet" type="text/css" href="css/monitter.css" />
+<style type="text/css">
+#tweets p { font-size: 12px; color: #efefef; }
+.monitter { width: 250px; height: 400px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" src="js/monitter.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('#search').click(function() {
+    var keywd = $('#keywd').val();
+    $('#tweets').attr('title', keywd);
+  });
+});
+</script>
+</head>
+<body>
+<div>
+  <input id="keywd" type="text" value="JavaScript" />
+  <input id="search" type="button" value="検索" />
+</div>
+<div id="tweets" class="monitter" title="JavaScript" lang="ja"></div>
+</body>
+</html>

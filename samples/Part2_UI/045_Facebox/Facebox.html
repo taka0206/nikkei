@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- Faceboxの標準スタイルをインポート -->
+  <link rel=stylesheet href="css/facebox.css" type="text/css">
+
+  <!-- Faceboxライブラリをインポート -->
+  <script type="text/javascript" src="js/facebox.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+      // Faceboxに必要な画像のURLを設定する
+      $.facebox.settings.closeImage = 'css/images/closelabel.png';
+      $.facebox.settings.loadingImage = 'css/images/loading.gif';
+
+      // aタグのrel属性にアタッチする
+      $('a[rel*=facebox]').facebox();
+
+      // スクリプトによる実行例
+      $('#trigger1').click(function(){
+        $.facebox({ image: 'sample.jpg' })
+      });
+      $('#trigger2').click(function(){
+        $.facebox({ div: '#text' })
+      });
+      $('#trigger3').click(function(){
+        $.facebox({ ajax: 'sample.html' })
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <a href="sample.jpg" rel="facebox">■画像の表示</a>
+  <button id="trigger1">スクリプトによる実行</button>
+  <br />
+  <a href="#text" rel="facebox">■divタグ内のテキストの表示</a>
+  <button id="trigger2">スクリプトによる実行</button>
+  <div id="text" style="display:none">
+    このようにdivタグで囲まれたテキストを表示できます。
+  </div>
+  <br />
+  <a href="sample.html" rel="facebox">■外部ファイルの表示</a>
+  <button id="trigger3">スクリプトによる実行</button>
+  <br />
+</body>
+</html>

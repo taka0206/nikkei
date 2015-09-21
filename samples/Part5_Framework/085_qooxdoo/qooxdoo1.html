@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- qooxdooライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://cdnjs.cloudflare.com/ajax/libs/qooxdoo/2.1/q.min.js">
+  </script>
+
+  <script type="text/javascript">
+
+    // HTMLが読み込まれた後に実行される（1）
+    q.ready(function() {
+
+      // fooが示す要素内のHTMLを読み込み表示する（2）
+      alert( q("#foo").getHtml() );
+
+      // 画像をクリックしたときに呼び出される（3）
+      q("#bar").on("click",function() {
+
+          // CSS3 transform（4）
+          this.transform({
+            scale: "1.5",     // 1.5倍
+            rotate:"45deg"    // 45度回転
+          });
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <div id="foo">画像をクリックしてください</div>
+  <img id="bar" src="birds.jpg" />
+</body>
+</html>

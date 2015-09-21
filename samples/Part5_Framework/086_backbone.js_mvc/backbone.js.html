@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Gist検索</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- Backbone.jsと依存ライブラリ（Underscoe.js）をインポート -->
+  <script type="text/javascript" src="js/underscore-1.4.3.js"></script>
+  <script type="text/javascript" src="js/backbone-0.9.9.js"></script>
+  <!-- Modelクラスをインポート -->
+  <script type="text/javascript" src="js/models.js"></script>
+  <!-- Viewクラスをインポート -->
+  <script type="text/javascript" src="js/views.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (1) アプリケーションModelオブジェクトを作成
+      var app = new App();
+      // (2) アプリケーションViewオブジェクトを作成
+      var appView = new AppView({ model: app });
+    });
+  </script>
+</head>
+<body>
+  <!-- Viewの定義 -->
+  <div id="gistapp">
+    <header>
+      <h1>Gist検索</h1>
+    </header>
+    <section id="condition">
+      ユーザー
+      <input type="text" id="user" />
+      <button id="search">検索</button>
+    </section>
+    <section id="result">
+      <ol id="gist-list"></ol>
+    </section>
+  </div>
+</body>
+</html>

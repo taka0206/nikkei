@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- JSON2ライブラリをインポート -->
+  <script type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js">
+      </script>
+
+  <!-- jQueryライブラリをインポート -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- jstorageライブラリをインポート -->
+  <script type="text/javascript" src="js/jstorage.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+      // データ取得（1）
+      $('#name').val($.jStorage.get('name'));
+      $('#memo').val($.jStorage.get('memo'));
+
+      $("#set").click(function(){
+        // データ登録（2）
+        $.jStorage.set('name',$('#name').attr('value'));
+        $.jStorage.set('memo',$('#memo').attr('value'));
+      });
+
+      $("#del").click(function(){
+        // データ削除
+        $.jStorage.deleteKey('name');
+        $.jStorage.deleteKey('memo');
+        location.reload();
+      });
+    });
+
+  </script>
+</head>
+<body>
+<form id="sample">
+  名前：<input id="name" /><br />
+  備考：<input id="memo" /><br /><br />
+  <button id="set">登録</button>
+  <button id="del">削除</button>
+</form>
+
+</body>
+</html>

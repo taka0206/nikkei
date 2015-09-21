@@ -1,0 +1,23 @@
+<table border="1">
+<tr>
+  <td>名前</td>
+  <td>価格</td>
+  <td></td>
+</tr>
+  <!-- 本の一覧。 data-foreachがループを示し、1行文のデータが「book」に入る -->
+  <tr data-foreach-book="bookList">
+    <!-- 本の名称を表示 -->
+    <td><label data-bind="book.name"></label></td>
+    <!-- 本の価格を表示 -->
+    <td>定価<label data-bind="book.price"></label>円</td>
+    <!-- 本のデータの削除ボタン。 data-event-click属性が、ボタン押下時に処理するコントローラのメソッドを示す -->
+    <td><button class="destroy" data-event-click="destroyBook">削除</button></td>
+  </tr>
+</table>
+<h2>書籍登録</h2>
+<!-- 本を登録する。data-event-submit属性が、ボタン押下時に処理するコントローラのメソッドを示す -->
+<form data-formfor-book="newBook" data-event-submit="createBook">
+  <input type="text" placeholder="書籍名を入れてください" autofocus data-bind="book.name">
+  <input type="text" placeholder="定価を入れてください" data-bind="book.price">
+  <input type="submit" value="登録" />
+</form>

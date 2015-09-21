@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Star Rating</title>
+<link rel="stylesheet" type="text/css"
+  href="css/jquery.rating.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" 
+  src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript" src="js/jquery.rating.js"></script>
+<script type="text/javascript">
+$(function () {
+  $('.starbar').rating({
+    cancel: '消去',
+    callback: function(value) {
+      $.post(
+        './rating.php',
+        { rating: value },
+        function () { window.alert('「' + value + '」をつけました。'); }
+      );
+    }
+  });
+});
+</script>
+</head>
+<body>
+<form id="fm" action="">
+  <input name="rate" type="radio" class="starbar" value="1" title="わるい" />
+  <input name="rate" type="radio" class="starbar" value="2" title="いまいち" />
+  <input name="rate" type="radio" class="starbar" value="3" title="ふつう"
+    checked="checked"/>
+  <input name="rate" type="radio" class="starbar" value="4" title="まあまあ"/>
+  <input name="rate" type="radio" class="starbar" value="5" title="よい"/>
+</form>
+</body>
+</html>

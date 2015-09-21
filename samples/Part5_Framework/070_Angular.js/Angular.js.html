@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- コンポーネントの宣言 -->
+<html ng-app="components">
+  <head>
+  <meta charset="utf-8">
+  <title>書籍紹介</title>
+  <!--angular.jsをインポート-->
+  <script src="js/angular.min.js"></script>
+  </head>
+  <body>
+  <!--制御を行うコントローラー（メソッド）名を指定-->
+  <div ng-controller="BookList">
+    <table border="1">
+    <tr>
+      <td>名称 </td>
+      <td>価格</td>
+    </tr>
+    <!--ループを行う配列名と、１個ずつ格納する変数名を指定-->
+    <tr ng-repeat="book in books">
+      <!-- 配列の1行から値を取得しセット-->
+      <td>{{book.name}}</td>
+      <td>定価{{book.price}}円</td>
+    </tr>
+    </table>
+  </div>
+  </body>
+<script type="text/javascript">
+<!--
+// Angular.jsのモジュールの宣言 
+angular.module('components', []);
+// ng-controllerで指定したコントローラーメソッド。
+// $scopeは、ng-controller内で有効なコントローラーオブジェクト。
+function BookList($scope) {
+  $scope.books = [{
+    name: 'アプリを作ろう！　Android入門 ～ゼロから学ぶアプリの作成から公開まで',
+    price : 1995
+  },
+  {
+    name: 'TECHNICAL MASTER　はじめてのJSP＆サーブレット　Eclipse 3.7 Indigo＋Tomcat 7対応版',
+    price : 2730
+  },
+  {
+    name: 'Windows Azure Platform開発入門',
+    price : 3990
+  }];
+  
+}
+-->
+</script>
+</html>

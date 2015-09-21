@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jquery-noticeの標準スタイルをインポート -->
+  <link rel=stylesheet
+    href="css/jquery.notice.css" type="text/css" />
+
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- jquery-noticeライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.notice.js"></script>
+
+  <style>
+    .error { background:red; }
+  </style>  
+
+  <script type="text/javascript">
+
+    $(function(){
+
+      $('button.add1').click( function(){
+        $.noticeAdd({
+            text: 'notification（閉じるボタンのクリックで消去）',
+            stay: true
+        });
+      });
+      $('button.add2').click( function(){
+        $.noticeAdd({
+            text: 'notification（自動消去）',
+            stay: false
+        });
+      });
+      $('button.add3').click( function(){
+        $.noticeAdd({
+            text: 'errorクラスのメッセージ',
+            type: 'error',
+            stay: true
+        });
+      });
+
+      $('button.remove1').click( function(){
+        $.noticeRemove($('.notice-item-wrapper'));
+      });
+      $('button.remove2').click( function(){
+        $.noticeRemove($('.error'));
+      });
+    });
+  </script>
+</head>
+<body>
+  <button class="add1">付箋タイプの通知</button>
+  <button class="add2">通常の通知</button>
+  <button class="remove1">すべて消去</button>
+  <br />
+  <button class="add3">'error'通知</button>
+  <button class="remove2">'error'のみ消去</button>
+</body>
+</html>

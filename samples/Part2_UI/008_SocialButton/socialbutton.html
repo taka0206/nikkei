@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>SocialButton</title>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript" 
+  src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript"
+  src="js/jquery.socialbutton-1.9.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#facebook_like').socialbutton('facebook_like', {
+    button: 'button_count',
+    locale: 'ja_JP',
+  });
+
+  $('#facebook_share').socialbutton('facebook_share', {
+    button: 'icon_link',
+    url: 'http://www.wings.msn/to/'
+  });
+
+  $('#twitter').socialbutton('twitter', {
+    button: 'horizontal',
+    url: 'http://www.wings.msn/to/',
+    text: 'WINGSプロジェクト',
+    lang: 'ja',
+    via: 'yyamada'
+  });
+
+  $('#google_plusone').socialbutton('google_plusone', {
+    button: 'small',
+    count: false
+  });
+
+  $('#gree_sf').socialbutton('gree_sf', {
+    button: 1
+  });
+
+  $('#evernote').socialbutton('evernote', {
+    button: 'article-clipper-jp',
+    provider_name: 'WINGSプロジェクト'
+  });
+
+  $('#hatena').socialbutton('hatena', {
+    button: 'vertical',
+    title: 'WINGSプロジェクト'
+  });
+
+  $('#mixi_check').socialbutton('mixi_check', {
+    key: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    button: 'button-1'
+  });
+
+  $('#mixi_like').socialbutton('mixi_like', {
+    show_faces: false,
+    key: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+  });
+});
+</script>
+</head>
+<body>
+<div id="twitter"></div>
+<div id="google_plusone"></div>
+<div id="gree_sf"></div>
+<div id="evernote"></div>
+<div id="hatena"></div>
+<div id="mixi_check"></div>
+<div id="mixi_like"></div>
+<div id="facebook_like"></div>
+<div id="facebook_share"></div>
+</body>
+</html>

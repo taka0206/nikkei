@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jQueryライブラリをインポート（1） -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!--IE9未満なら読み込む（2）-->
+    <!--[if lt IE 9]>
+    <script language="javascript" 
+     type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]-->
+
+  <!-- Flotライブラリをインポート（3）-->
+  <script language="javascript"
+    type="text/javascript" src="js/jquery.flot.js"></script>
+
+  <script type="text/javascript">
+
+    $(function () {
+
+      // データ設定
+      var d1 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+      var d2 = [];
+      for (var i = 0; i < 14; i += 0.5) {
+        d2.push( [i, Math.sin(i)] );
+      }
+
+      $.plot(
+        '#graph1',                // グラフの表示領域を指定する
+        [                         // グラフの設定
+          { 
+            label: '折れ線',
+            data: d1
+           },
+          { 
+            label: 'サイン波',
+            data: d2
+           }
+        ]
+      );
+
+    });
+  </script>
+</head>
+<body>
+  <!-- グラフの表示領域（1） -->
+  <div id="graph1" style="width:600px;height:300px;"></div>
+</body>
+</html>

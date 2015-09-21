@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>パネルのサンプル</title>
+  <link href="css/ext-all.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/ext-all.js"></script>
+  <script type="text/javascript">
+  <!--
+  Ext.onReady(function() {
+    // パネルの生成
+    var panel = new Ext.Panel({
+      // 表示するHTMLのid
+      renderTo: 'panel',
+      // タイトル
+      title: '伝言板',
+      // パネル内に表示するHTML
+      html: "おはようございます。今日の13時からの会議は<b>中止</b>になり、木曜日の10時からになりました。",
+      // パネルにボタンを置く
+      buttons: [{ text: "外出予定",
+          handler: function() {
+            Ext.Msg.alert("外出予定", "月曜日：無し。<br / >火曜日：午後は横浜に外出します。"); 
+          }
+        },
+        { text: "休暇予定",
+          handler: function() {
+            Ext.Msg.alert("休暇予定", "12月24日は休暇です。理由は聞かないでください。");
+        }
+      }],
+      // サイズ
+      width: 320,
+      height: 150,
+      padding: 20,
+      frame: true
+    });
+  });
+
+  -->
+  </script>
+</head>
+<body>
+<div id="panel"></div>
+</body>
+</html>

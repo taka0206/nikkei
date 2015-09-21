@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JsMockito Test</title>
+  <link rel="stylesheet" href="css/qunit-1.10.0.css">
+  <script type="text/javascript" src="js/qunit-1.10.0.js"></script>
+  <!-- (1) JsHamcrestをインポート -->
+  <script type="text/javascript" src="js/jshamcrest.js"></script>
+  <!-- (2) JsMockitoをインポート -->
+  <script type="text/javascript" src="js/jsmockito-1.0.4.js"></script>
+  <!-- (3) テスト対象コードをインポート -->
+  <script type="text/javascript" src="js/greeter.js"></script>
+  <!-- (4) テストコードをインポート -->
+  <script type="text/javascript" src="js/greeter-stub.js"></script>
+  <script type="text/javascript" src="js/greeter-mock.js"></script>
+  <script type="text/javascript" src="js/greeter-spy.js"></script>
+  <script type="text/javascript">
+    // (5) JsMockitoの統合
+    JsMockito.Integration.QUnit();
+    // (6) JsHamcrestの統合
+    JsHamcrest.Integration.QUnit();
+  </script>
+</head>
+<body>
+  <div id="qunit"></div>
+</body>
+</html>

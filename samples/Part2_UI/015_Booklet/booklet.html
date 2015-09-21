@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Booklet</title>
+<link rel="stylesheet" type="text/css"
+  href="css/jquery.booklet.1.4.0.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.8.2/jquery-ui.js"></script>
+<script type="text/javascript" 
+  src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript"
+  src="js/jquery.booklet.1.4.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#mybook').booklet({
+    arrows: true,
+    closed: true,
+    covers: true,
+    chapterSelector: true,
+    pageSelector: true,
+    menu: '#custom_menu',
+    closedFrontTitle: 'jQuery UI',
+    closedFrontChapter: 'jQuery UI',
+    closedBackTitle: 'おわり',
+    closedBackChapter: 'おわり'
+  });
+});
+</script>
+</head>
+<body>
+<div id="custom_menu"></div>
+<div id="mybook">
+  <div> 
+    <h3>jQuery UI</h3>
+  </div>
+  <div title="jQuery UI利用の基本" rel="第1章"> 
+    <h3>jQuery UIの使い方</h3>
+    <p>jQuery UIの動作に必要なライブラリ／スタイルシートは、jQuery本家のCDNで提供されています。</p>
+    <p>準備が不要という意味でも、レスポンスに優れるという意味でも、一般的には、まずはこちらを利用するのが便利です。<br />CDNを利用するには、リストXXのようなコードをページに含めるだけです。</p>
+  <p>link要素の太字は、テーマ名を表しています。ここでは、ui-lightnessというテーマを選択していますが、その他にも表XXのようなテーマを利用できます。</p>
+  </div>
+  <div title="jQuery UIのオフライン利用法"> 
+    <h3>jQuery UIをオフラインで利用する</h3>
+    <p>jQuery UIをオフライン環境で動作することもできます。この場合は、jQueryの本家サイト（<a href="http://jquery.com/">http://jquery.com/</a>）からjQueryを、jQuery UIの本家サイト（<a href="http://jqueryui.com/download/">http://jqueryui.com/download/</a>）からjQuery UIのライブラリ／スタイルシートをそれぞれダウンロードしてください。<br />jQuery UIのダウンロードページでは利用する機能に応じて、組み込むコードを絞り込むこともできます。<br />慣れないうちは、まずはすべての機能にチェックを入れておいて問題ありません。<br />また、使用するデザインもページ下のThemeから選択できます。</p>
+  </div>
+  <div title="オートコンプリート" rel="第2章"> 
+    <h3>オートコンプリートの基本</h3>
+    <p>AutoCompleteは、テキストボックスにオートコンプリート機能を実装するためのウィジェットです。<br />最初の何文字かを入力することで、あらかじめ用意しておいた候補リストから合致する単語をリスト表示します。</p>
+  </div>
+  <div title="リスト選択時のカスタマイズ処理"> 
+    <h3>リスト選択時の処理をカスタマイズする</h3>
+    <p>jQuery UIでは、それぞれ独自のイベントを公開しており、ウィジェットの動作に応じてアプリ固有の処理をさしはさむことができます。<br />たとえばAutoCompleteウィジェットであれば、open、close、selectなどのイベントを公開していますので、候補リストを表示／非表示にしたタイミングや、リストを選択したタイミングでの処理を追加できます。</p>
+  </div>
+  <div> 
+    <h3>おわり</h3>
+  </div>
+</div>
+</body>
+</html>

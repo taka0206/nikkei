@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Autocomplete</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#search').autocomplete({
+    source: 'autocomplete.php',
+    minLength: 2,
+    delay: 1000
+  });
+});
+</script>
+</head>
+<body>
+<label for="search">食材: </label>
+<input id="search">
+</body>
+</html>

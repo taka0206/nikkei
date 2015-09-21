@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Snippet</title>
+<link rel="stylesheet" type="text/css"
+  href="css/jquery.snippet.min.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript"
+  src="js/jquery.snippet.min.js"></script>
+<script type="text/javascript">
+$(function () {
+  $('pre.jscode').snippet('javascript', {
+    style: 'random',
+    box: '4-7,8-13',
+    collapse: true,
+    showMsg: 'ソースコードを表示',
+    hideMsg: 'ソースコードを隠す',
+    startCollapsed: false,
+    clipboard: 'css/ZeroClipboard.swf'
+  });
+});
+</script>
+</head>
+<body>
+<pre class="jscode">
+$(function(){
+  // Sliderウィジェットを適用
+  $('#slider').slider({
+    range: true,  // 範囲スライダーを有効化
+    values: [100, 400], // 初期値（範囲）
+    min: 0, // 最小値
+    max: 500, // 最大値
+    // スライダーの値が変化した時の処理
+    change: function (event, ui) {
+      // テキストボックスにスライダーの値を反映
+      $('#value1').val(ui.values[0]);
+      $('#value2').val(ui.values[1]);
+    }
+  });
+});
+</pre>
+</body>
+</html>

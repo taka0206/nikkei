@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- drag-drop-folder-treeの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="css/drag-drop-folder-tree.css" />
+  <link rel="stylesheet" type="text/css" href="css/context-menu.css" />
+
+  <!-- jQueryライブラリをインポート -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- drag-drop-folder-treeライブラリをインポート -->
+  <script type="text/javascript" src="js/ajax.js"></script>
+  <!-- context-menu.jsはdrag-drop-folder-tree.jsより前に読み込む -->
+  <script type="text/javascript" src="js/context-menu.js"></script>
+  <script type="text/javascript" src="js/drag-drop-folder-tree.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      treeObj = new JSDragDropTree();
+      treeObj.setTreeId('dhtmlgoodies_tree');
+      treeObj.setMaximumDepth(5);
+      treeObj.setMessageMaximumDepthReached('これ以上ノードは作れません');
+      treeObj.initTree();
+    });
+  </script>
+</head>
+<body>
+
+  <ul id="dhtmlgoodies_tree" class="dhtmlgoodies_tree">
+    <li id="node0" noDrag="true" noSiblings="true" noDelete="true"
+      noRename="true"><a href="#">ルートノード</a>
+      <ul>
+        <li id="node1"><a href="#">Europe</a>
+          <ul>
+            <li id="node2" noDelete="true"><a href="#">Norway</a>
+              <ul>
+                <li id="node3" noRename="true"><a href="#">Stavanger</a></li>
+              </ul>
+            </li>
+            <li id="node4"><a href="#">Sweden</a></li>
+            <li id="node5"><a href="#">Denmark</a></li>
+            <li id="node6"><a href="#">Germany</a>
+            </li>
+          </ul>
+        </li>
+        <li id="node7"><a href="#">Asia</a>
+          <ul>
+            <li id="node8"><a href="#">Japan</a>  
+            <li id="node9"><a href="#">China</a>  
+            <li id="node10"><a href="#">Indonesia</a>
+          </ul>
+        </li>
+        <li id="node11" noChildren="true">
+          <a href="#">この配下にノードは作れません</a>
+        </li>
+        <li id="node12" noDrag="true"><a href="#">移動不可</a></li>
+      </ul>
+    </li>
+  </ul>
+  <br />
+  <!-- ツリーの操作（7）-->
+  <a href="#" onclick="treeObj.collapseAll()">すべて折りたたむ</a> | 
+  <a href="#" onclick="treeObj.expandAll()">すべて展開する</a> | 
+  <a href="#" onclick="alert(treeObj.getNodeOrders())">ツリーの取得</a>
+</body>
+</html>

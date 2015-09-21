@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#list img.new')
+  .fadeOut(2000)
+  .fadeIn(2000)
+  .animate({
+    height: '145px',
+    width: '190px'
+  }, 2000);
+});
+</script>
+</head>
+<body>
+<ul id="list">
+  <li><img src="imges/01.jpg" class="new" /></li>
+  <li><img src="imges/02.jpg" /></li>
+  <li><img src="imges/03.jpg" /></li>
+  <li><img src="imges/04.jpg" class="new" /></li>
+</ul>
+</body>
+</html>

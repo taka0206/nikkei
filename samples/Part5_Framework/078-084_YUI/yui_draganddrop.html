@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI Drag&Dropのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<style>
+#demo ul li {
+  cursor: move;
+  margin: 3px;
+  list-style-type: none;
+  z-index: 2;
+  width: 200px;
+  padding: 2px;
+  zoom: 1;
+}
+#play {
+  border: 1px solid black;
+  zoom: 1;
+  padding: 2em;
+}
+
+#drop {
+  background-color: #eee;
+  height: 300px;
+  width: 200px;
+  float: right;
+  bottom: 300px;
+  position: relative;
+}
+#drop.yui3-dd-drop-over {
+  background-color: #ccc;
+}
+img.image {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<div id="play">
+  <div id="demo">
+    <ul>
+      <li><img class="image" src="img/img1.jpg" /></li>
+      <li><img class="image" src="img/img2.jpg" /></li>
+    </ul>
+  </div>
+  <div id="drop">ここに写真を入れてください</div>
+</div>
+</body>
+<script>
+// ドラッグアンドドロップモジュールの読み込み
+YUI().use('dd-delegate', 'dd-drop-plugin', 'dd-constrain', 'dd-proxy', function(Y) {
+  // ドラッグ対象のオブジェクトを指定する。このサンプルでは、li（リスト）で指定している要素をドラッグ対象とする。
+  var del = new Y.DD.Delegate({
+    container: '#demo',
+    nodes: 'li'
+  });
+
+  del.on('drag:start', function(e) {
+    e.target.get('node').setStyle('opacity', '.5');
+  });
+  del.on('drag:end', function(e) {
+    e.target.get('node').setStyle('opacity', '1');
+  });
+  
+  del.dd.plug(Y.Plugin.DDConstrained, {
+    constrain2node: '#play'
+  });
+
+  del.dd.plug(Y.Plugin.DDProxy, {
+    moveOnEnd: false,
+    cloneNode: true
+  });
+
+  var drop = Y.one('#drop').plug(Y.Plugin.Drop);
+  drop.drop.on('drop:hit', function(e) {
+    drop.set('innerHTML', e.drag.get('node').get('innerHTML') + 'が入りました！');
+  });
+});
+</script>
+</html>

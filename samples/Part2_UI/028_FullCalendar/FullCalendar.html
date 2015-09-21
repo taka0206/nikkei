@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jQueryライブラリをインポート（1） -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+
+  <!-- FullCalendarの標準スタイルをインポート（2） -->
+  <link rel="stylesheet"
+   href="css/fullcalendar.css" type="text/css" />
+
+  <!-- FullCalendarライブラリをインポート （3）-->
+  <script type="text/javascript" src="js/fullcalendar.min.js"></script>
+  <script type="text/javascript" src="js/gcal.js"></script>
+
+<script type='text/javascript'>
+
+  $(function(){
+
+    // サンプルのイベント設定のために現在日時を取得する
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    // オブジェクトの生成（4）
+    $('#calendar').fullCalendar({
+      // ヘッダーの指定
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      // タイトルのフォーマット
+      titleFormat: {
+        month: 'yyyy年 M月',
+        week: '[yyyy年 ]M月 d日{～[yyyy年 ][ M月] d日}',
+        day: 'yyyy年 M月 d日 dddd'
+      },
+      // 月日のフォーマット
+      columnFormat: {
+        month: 'ddd',
+        week: 'M/d（ddd）',
+        day: 'M/d（ddd）'
+      },
+      // 曜日のフォーマット
+      dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日',
+        '金曜日','土曜日'],
+      dayNamesShort: ['日','月','火','水','木','金','土'],
+      // 時刻のフォーマット
+      timeFormat: {
+        '': 'H:mm{ - H:mm}'
+      },
+      // ボタンの表示名
+      buttonText: {
+        today: '今日',
+        month: '月',
+        week: '週',
+        day: '日'
+      },
+      eventSources: [
+        {
+          url: 'http://www.google.com/calendar/feeds/ja.japanese%23holiday%40group.v.calendar.google.com/public/full/',
+          color: 'darkred',
+          textColor : 'white'
+        }
+      ],
+      eventColor: 'navajowhite',
+      events: [
+        {
+          title: '終日出張',
+          start: new Date(y, m, 1),
+          textColor : 'black'
+        },
+        {
+          title: '誕生日パーティー',
+          start: new Date(y, m, 10, 19, 0),
+          end: new Date(y, m, 10, 22, 30),
+          allDay: false,
+          textColor : 'darkred'
+        }
+      ],
+      editable: true
+    });
+    
+  });
+
+</script>
+<style type='text/css'>
+  body {
+    font-size: 13px;
+  }
+  #calendar {
+    width: 600px;
+  }
+  .fc-sat {
+    color: blue;
+  }
+  .fc-sun {
+    color: red;
+  }
+</style>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>

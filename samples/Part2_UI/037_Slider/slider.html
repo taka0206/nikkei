@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Slider</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style type="text/css">
+#slider{ width: 300px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('#slider').slider({
+    range: true,
+    values: [100, 400],
+    min: 0,
+    max: 500,
+    change: function (event, ui) {
+      $('#value1').val(ui.values[0]);
+      $('#value2').val(ui.values[1]);
+    }
+  });
+});
+</script>
+</head>
+<body>
+<p>価格：
+  <input type="text" id="value1" size="5" value="100" />～
+  <input type="text" id="value2" size="5" value="400" />円</p>
+ <div id="slider"></div>
+</body>
+</html>

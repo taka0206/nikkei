@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="UTF-8" />
+  <meta name=viewport content="width=device-width, minimum-scale=1,
+    maximum-scale=1, initial-scale=1">
+
+  <!-- Zoeyの標準スタイルをインポート -->
+  <link rel="stylesheet" href="release/zoey-0.2.1.min.css" />
+</head>
+<body>
+  <div data-role="page" data-theme="a" id="p1">
+    <div data-role="header">
+      <h1 data-role="page-title">UIコンポーネント一覧</h1>
+
+      <!-- ナビゲーション -->
+      <ul data-role="navigation">
+        <li><a href="#p1" data-role="button">page1</a></li>
+        <li><a href="#p2" data-role="button">page2</a></li>
+        <li><a href="#p3" data-role="button">page3</a></li>
+        <li><a href="#p4" data-role="button">page4</a></li>
+      </ul>
+
+    </div>
+    <div data-role="content">
+      <div data-role="panel">
+      <!-- リスト -->
+        <ul data-role="list">
+          <li data-icon="arrow-r" data-icon-position="right">
+            <a href="#p2">グリッド表示</a>
+          </li>
+          <li data-icon="arrow-r" data-icon-position="right">
+            <a href="#p3">開閉可能なパネル</a>
+          </li>
+          <li data-icon="arrow-r" data-icon-position="right">
+            <a href="#p4">入力フォーム</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="footer">
+      <ul data-role="navigation">
+        <li><a href="#" data-role="button">フッター</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="page" data-theme="b" id="p2">
+    <div data-role="header">
+      <a data-role="button" data-rel="back" data-icon="arrow-l">戻る</a>
+      <h1 data-role="page-title">グリッド表示</h1>
+    </div>
+    <div data-role="content">
+      <div data-role="panel">
+
+        <!-- グリッド表示 -->
+        <div data-role="grid" data-size="b">
+          <div data-role="grid-row">
+            <div data-role="grid-cell">左列</div>
+            <div data-role="grid-cell">右列</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="footer">
+      <ul data-role="navigation">
+        <li><a href="#" data-role="button">フッター</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="page" data-theme="c" id="p3">
+    <div data-role="header">
+      <a data-role="button" data-rel="back" data-icon="arrow-l">戻る</a>
+      <h1 data-role="page-title">開閉可能なパネル</h1>
+    </div>
+    <div data-role="content">
+      <div data-role="panel">
+
+        <!-- 開閉可能にする -->
+        <div data-role="collapsible" data-collapsed="true">
+          <h3 data-theme=c>セロ弾きのゴーシュ</h3>
+          <div data-role=panel>
+            <p>ロマチックシューマンは床下ヴァイオリンやわたしにひるまているまし。
+            セロは音がちょっとにつけるが下を狸のようをうたいながらかっこうにしてどうして舌にくれよとだした。</p>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="footer">
+      <ul data-role="navigation">
+        <li><a href="#" data-role="button">フッター</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="page" data-theme="d" id="p4">
+    <div data-role="header">
+      <a data-role="button" data-rel="back" data-icon="arrow-l">戻る</a>
+      <h1 data-role="page-title">入力フォーム</h1>
+    </div>
+    <div data-role="content">
+
+      <div data-role="panel">
+        <ul>
+          <!-- 入力フォーム -->
+          <li data-role=field>
+            <label>E-mail:
+              <input type="text" id="ename">
+            </label>
+          </li>
+          <li data-role=field>
+            <label>名前:
+              <input type="text" id="name">
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-role="footer">
+      <ul data-role="navigation">
+        <li><a href="#" data-role="button">フッター</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Zoeyライブラリをインポート -->
+  <script type="text/javascript" src="release/zoey-0.2.1.bundle.min.js"></script>
+</body>
+</html>

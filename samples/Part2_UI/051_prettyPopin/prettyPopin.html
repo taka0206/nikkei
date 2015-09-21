@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- prettyPopinの標準スタイルをインポート（1） -->
+  <link rel=stylesheet
+    href="css/prettyPopin.css" type="text/css" />
+
+  <!-- jQueryライブラリをインポート（2） -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- prettyPopinライブラリをインポート（3） -->
+  <script type="text/javascript"
+    src="js/jquery.prettyPopin.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      // 最初のアンカータグで実行される
+      $("a[rel^='prettyPopin']:eq(0)").prettyPopin(
+        { 
+          width: 550,
+          followScroll:false
+        }
+      );
+
+      // 2つめのアンカータグで実行される
+      $("a[rel^='prettyPopin']:eq(1)").prettyPopin(
+        {
+          width: 550,
+          callback : function(){
+            alert('ポップアップが閉じました');
+          }
+        }
+      );
+
+    });
+  </script>
+</head>
+<body>
+ ・<a href="ajax/regular.html" rel="prettyPopin">
+     ポップアップ表示</a><br />
+ ・<a href="ajax/page-1.html" rel="prettyPopin">
+     ポップアップ表示（内部画面遷移あり）</a>
+</body>
+</html>

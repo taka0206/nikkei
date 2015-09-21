@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+
+	<!-- viewportの指定 (1) -->
+  <meta name="viewport"
+   content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+	<!-- iUIの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css" href="iui/iui.css" />
+  <link rel="stylesheet" title="Default" type="text/css"
+    href="iui/t/default/default-theme.css"/>
+  <link rel="stylesheet"
+    type="text/css" href="css/iui-panel-list.css" />
+
+	<!-- iUIライブラリをインポート -->
+  <script type="text/javascript" src="iui/iui.js"></script>
+
+</head>
+<body>
+  <div class="toolbar">
+    <h1 id="pageTitle"></h1>
+    <a id="backButton" class="button" href="#"></a>
+  </div>
+
+  <ul id="home" title="トップページ" selected="true">
+    <li><a href="#page1">２ページ目へ</a></li>
+    <li><a href="#page2">３ページ目へ</a></li>
+  </ul>
+
+  <ul id="page1" title="２ページ目"  selected="false">
+    ２ページ目です
+  </ul>
+
+  <div id="page2" class="panel" title="３ページ目">
+    ３ページ目です
+  </div>
+</body>
+</html>

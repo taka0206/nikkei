@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/mocha.css" />
+  <title>chaiのサンプル</title>
+  <script type="text/javascript" src="js/chai.js"></script>
+  <script type="text/javascript" src="js/mocha.js"></script>
+  <script type="text/javascript">
+  <!--
+  mocha.setup('bdd');
+  mocha.setup('tdd');
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+  // chaiの各アサーションモジュールを読み込む
+  // assertの機能を読み込み
+  var assert = chai.assert;
+  // expectの機能を読み込み
+  var expect = chai.expect;
+  // shouldの機能を読み込み
+  var should = chai.Should();
+  
+  // テスト対象のメソッド。
+  var fizzbuzz = function(n){
+      if (n > 1)
+      fizzbuzz(n-1);
+      if (n % 3 == 0 && n % 5 == 0)
+      return "Fizz,Buzz";
+      else if (n % 3 == 0)
+      return "Fizz";
+      else if (n % 5 == 0)
+      return "Buzz";
+      else
+      return n;
+    }
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+  // assertでテストを記述
+  suite('fizzbuzzのテストを行います（assert）', function(){
+    suite('#fizzbuzz()', function(){
+      test("3の場合はFizzが返ってくる", function () {
+        assert.equal("Fizz", fizzbuzz(3), '3の場合はFizzが返ってくる');
+      });
+      test("3と5の倍数以外は、数字が返ってくる", function () {
+        assert.notEqual("Fizz", fizzbuzz(1), '3の場合はFizzが返ってくる');
+        assert.notEqual("Buzz", fizzbuzz(1), '3の場合はFizzが返ってくる');
+        assert.notStrictEqual("1", fizzbuzz(1), '3の場合はFizzが返ってくる');
+      });
+      test("5の場合はBuzzが返ってくる", function () {
+        assert.strictEqual("Buzz", fizzbuzz(5), '3の場合はFizzが返ってくる');
+      });
+      test("15の場合はFizz,Buzzが返ってくる", function () {
+        assert.strictEqual("Fizz,Buzz", fizzbuzz(15), '3の場合はFizzが返ってくる');
+      });
+    });
+  });
+  
+  // expectでテストを記述
+  describe('fizzbuzzのテストを行います（expect）', function() {
+    describe('#fizzbuzz()', function() {
+      it("3の場合はFizzが返ってくる", function () {
+        expect("Fizz").to.eql(fizzbuzz(3));
+      });
+      it("3と5の倍数以外は、数字が返ってくる", function () {
+        expect("Fizz").not.to.eql(fizzbuzz(1));
+        expect("Buzz").not.to.eql(fizzbuzz(1));
+        expect("Fizz,Buzz").not.to.eql(fizzbuzz(1));
+      });
+      it("5の場合はBuzzが返ってくる", function () {
+        expect("Buzz").to.eql(fizzbuzz(5));
+      });
+      it("15の場合はFizz,Buzzが返ってくる", function () {
+        expect("Fizz,Buzz").to.eql(fizzbuzz(15));
+      });
+    });
+  });
+  
+  // shouldでテストを記述
+  describe('fizzbuzzのテストを行います（expect）', function() {
+    describe('#fizzbuzz()', function() {
+      it("3の場合はFizzが返ってくる", function () {
+        fizzbuzz(3).should.to.eql("Fizz");
+      });
+      it("3と5の倍数以外は、数字が返ってくる", function () {
+        expect(fizzbuzz(1)).not.to.eql("Fizz");
+        expect(fizzbuzz(1)).not.to.eql("Buzz");
+        expect(fizzbuzz(1)).not.to.eql("Fizz,Buzz");
+      });
+      it("5の場合はBuzzが返ってくる", function () {
+        expect(fizzbuzz(5)).to.eql("Buzz");
+      });
+      it("15の場合はFizz,Buzzが返ってくる", function () {
+        expect(fizzbuzz(15)).to.eql("Fizz,Buzz");
+      });
+    });
+  });
+  
+  -->
+  </script>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+<script type="text/javascript">
+<!--
+mocha
+.globals([ 'localizedStrings' ])
+.globals([ 'script*' ])
+.run();
+-->
+</script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Menu</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style type="text/css">
+.ui-menu { width: 200px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#menu').menu({
+    icons: { submenu: "ui-icon-triangle-1-e" }
+  });
+});
+</script>
+</head>
+<body>
+<ul id="menu">
+  <li><a href="top.html"><span class="ui-icon ui-icon-home"></span>トップページ</a></li>
+  <li><a href="foods.html">食品</a>
+    <ul>
+      <li><a href="vegetables.html">野菜</a>
+        <ul>
+          <li><a href="roots.html">根菜</a>
+            <ul>
+              <li><a href="burdock.html">ごぼう</a></li>
+              <li><a href="radish.html">だいこん</a></li>
+              <li><a href="carrot.html">にんじん</a></li>
+            </ul>
+          </li>
+          <li><a href="greens.html">葉物</a>
+            <ul>
+              <li><a href="cabbage.html">キャベツ</a></li>
+              <li><a href="lettuce.html">レタス</a></li>
+              <li><a href="napa.html">はくさい</a></li>
+            </ul>
+          </li>
+          <li><a href="potato.html">イモ類</a>
+            <ul>
+              <li><a href="potatoes.html">じゃがいも</a></li>
+              <li><a href="sweet_potato">さつまいも</a></li>
+              <li><a href="taro.html">さといも</a></li>
+              <li><a href="yam.html">やまいも</a></li>
+            </ul>
+          </li>
+          <li><a href="general.html">一般野菜</a>
+            <ul>
+              <li><a href="cucumber.html">きゅうり</a></li>
+              <li><a href="tomato.html">とまと</a>
+              <li><a href="eggplant.html">なす</a></li>
+              <li><a href="onion.html">たまねぎ</a></li>
+              <li><a href="pimiento.html">ピーマン</a></li>
+            </ul>
+          </li>
+          <li><a href="watermelon.html">すいか</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="dairy_goods.html">乳製品</a>
+        <ul>
+          <li><a href="milk.html">牛乳</a></li>
+          <li><a href="butter.html">バター</a></li>
+          <li><a href="yogurt.html">ヨーグルト</a></li>
+        </ul>
+      </li>
+      <li><a href="fish.html">お魚</a>
+        <ul>
+          <li><a href="whole.html">丸もの</a>
+            <ul>
+              <li><a href="mackerel.html">さば</a></li>
+              <li><a href="sardine.html">いわし</a></li>
+              <li><a href="saury.html">さんま</a></li>
+            </ul>
+          </li>
+          <li><a href="dried_fish">干物</a>
+            <ul>
+              <li><a href="horse_mackerel.html">アジの開き</a></li>
+              <li><a href="atka_mackerel .html">ほっけ一夜干し</a></li>
+            </ul>
+          </li>
+          <li><a href="sashimi.html">お刺身</a>
+            <ul>
+              <li><a href="sea_bream.html">たい</a></li>
+              <li><a href="tuna.html">まぐろ</a></li>
+              <li><a href="salmon.html">さけ</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#">生活雑貨</a>
+      <ul>
+        <li><a href="cleanser.html">洗剤</a></li>
+        <li><a href="softener.html">柔軟剤</a></li>
+        <li><a href="bleach.html">漂白剤</a></li>
+      </ul>
+      <ul>
+        <li><a href="toilet_paper.html">トイレットペーパー</a></li>
+        <li><a href="box_tissue.html">箱ティッシュ</a></li>
+        <li><a href="pocket_tissue.html">ポケットティッシュ</a></li>
+        <li><a href="diaper.html">おむつ</a></li>
+      </ul>
+  </li>
+  <li><a href="#"><span class="ui-icon ui-icon-comment"></span>お問い合わせ</a>
+      <ul>
+        <li><a href="tel.html">電話</a></li>
+        <li><a href="mail.html">メール</a></li>
+      </ul>
+  </li>
+  <li class="ui-state-disabled"><a href="access.html">アクセス</a></li>
+</ul>
+</body>
+</html>

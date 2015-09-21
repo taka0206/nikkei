@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,
+    minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <!-- jqMiniの標準スタイルをインポート -->
+  <link rel="stylesheet" type="text/css"href="css/jqMini.css" />
+
+  <!-- jQueryをインポート（1） -->
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- jqMiniライブラリをインポート（2） -->
+  <script type="text/javascript" src="js/jqMini.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+        $("#next_animation").text( "popup" );
+
+      // jqMiniオブジェクトの生成（3）
+      var jqmini = $("#jqmini").jqMini();
+
+      // ランダムなアニメーション名を得る（4）
+      var actions = function(){
+        var ary = ['fade','popup','popdown','flipleft',
+          'flipright','flipup','flipdown','turnleft',
+          'turnright','flowleft','flowright','slideleft',
+          'slideright','slideup','slidedown','slidefadeleft',
+          'slidefaderight','slidefadeup','slidefadedown',
+          'coverleft','coverright','coverup','coverdown',
+          'shuffleleft','shuffleright','shuffleup',
+          'shuffledown','shrink','rollleft','rollright'];
+
+        // 乱数でインデックスを指定する
+        return ary[ Math.floor( Math.random() * ary.length ) ];
+      };
+
+      $("#main").bind(jqMiniEvent.preShow,function() {
+        $("#next_animation").text( actions() );
+      });
+
+      $("#next").click(function(){
+        // #page2に遷移する（5）
+        jqmini.goTo("#page2",{
+          transition: $("#next_animation").text() // ランダムなアニメーション名
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="jqmini" class="jqMini">
+
+    <!-- 初期ページ -->
+    <div id="main" class="current page">
+      <h2><div id="next_animation"></div></h2>
+     その時の母親さえ姿を見た感じがつるつるしていないと
+      持ち上げられた。ここでニャーニャー泣いたら、
+      吾輩は違っていなかったぎりほとんど出ない。
+      <br />
+      <button id="next">次へ（ランダム）</button>
+  </div>
+
+  <!-- ページ2 -->
+    <div id="page2" class="page">
+      元来我々同族間で正当に吾人がこれを醒りゃくだ。
+      のみなら、這い上っては書生というものである。
+      この間おさんと思って日がない。
+      <br />
+      <a href="#main" data-transition="slidefadeleft">戻る</a>
+    </div>
+
+  </div>
+</body>
+</html>

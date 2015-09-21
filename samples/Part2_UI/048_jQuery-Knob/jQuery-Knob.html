@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+	<!-- jQueryライブラリをインポート -->
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+	<!-- jQuery-Knobライブラリをインポート -->
+	<script type="text/javascript"
+	  src="js/jquery.knob.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+
+			// 円グラフ全体の設定
+			$(".dial").knob({
+											'release' : function (v) {
+													if (v == 50) alert("50");
+											}
+			});
+
+			// 個別の設定
+			$("#dialx").val(27).trigger('change');
+
+		});
+	</script>
+</head>
+<body>
+  <input type="text" value="75" class="dial" />
+  <input type="text" class="dial"
+    data-fgColor="#66cc66" data-angleArc="250" id="dialx" />
+</body>
+</html>

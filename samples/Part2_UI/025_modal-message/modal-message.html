@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- modal-messageの標準スタイルをインポート（1） -->
+  <link rel=stylesheet type="text/css" href="css/modal-message.css" />
+
+  <!-- modal-messageライブラリをインポート（2） -->
+  <script type="text/javascript" src="js/modal-message.js"></script>
+
+  <!-- Ajax用のライブラリをインポート（3） -->
+  <script type="text/javascript" src="js/ajax.js"></script>
+  <script type="text/javascript" src="js/ajax-dynamic-content.js">
+  </script>
+
+  <script type="text/javascript">
+
+    // オブジェクトの作成（4）
+    var messageObj = new DHTML_modalMessage();
+
+    // 固定メッセージ表示（5）
+    var displayStaticMessage = function(messageContent){
+      // コンテンツのセット
+      messageObj.setHtmlContent(messageContent);
+
+      messageObj.setSource(false);
+      // サイズ
+      messageObj.setSize(350,200);
+      // ダイアログ枠の影なし
+      messageObj.setShadowDivVisible(false);
+      // 表示
+      messageObj.display();
+    }
+
+    // 外部コンテンツの表示（6）
+    var displayMessage = function(url){
+      // 外部コンテンツのURL
+      messageObj.setSource(url);
+      messageObj.setSize(300,100);
+      messageObj.setShadowDivVisible(true);
+      messageObj.display();
+    }
+
+    // 外部コンテンツの表示（6）
+    var closeMessage = function(){
+      messageObj.close(); 
+    }
+    
+    // 固定メッセージ
+    var msg = "<h1>固定メッセージ</h1><br />"
+              + "<a href=\"#\" onclick=\"closeMessage();"
+              + "return false\">閉じる</a>";
+  </script>
+</head>
+<body>
+  <a href="#"
+    onclick="displayStaticMessage(msg);return false">固定メッセージ</a>
+  <br />
+  <a href="#"
+    onclick="displayMessage('demo-modal-message.inc');return false">
+別ファイルのコンテンツを表示</a>
+</body>
+</html>

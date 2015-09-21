@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>パネルのサンプル</title>
+  <link href="css/ext-all.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/ext-all.js"></script>
+  <script type="text/javascript">
+<!--
+  Ext.onReady(function() {
+    // Ext.Viewportクラスオブジェクトの生成
+    new Ext.Viewport({
+      layout : 'border',
+      // 上下真ん中右左のパネルの作成。
+      items : [new Ext.Panel({
+        title : '真ん中',
+        html : '真ん中のパネル',
+        region : 'center'
+      }), new Ext.Panel({
+        title : '上',
+        html : '上のパネル',
+        margins : '0 3 0 3',
+        height : 100,
+        region : 'north',
+        split : true
+      }), new Ext.Panel({
+        title : '下',
+        html : '下のパネル',
+        margins : '3 3 3 3',
+        height : 100,
+        region : 'south',
+        collapsible : true
+      }), new Ext.Panel({
+        title : '右',
+        html : '右のパネル',
+        margins : '0 3 0 3',
+        region : 'east',
+        collapsible : true
+      }), new Ext.Panel({
+        title : '左',
+        html : '左のパネル',
+        margins : '0 0 0 3',
+        width : 320,
+        region : 'west',
+        split : true
+      })]
+    });
+  });
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

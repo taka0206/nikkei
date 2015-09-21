@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUI Cacheのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<script type="text/javascript">
+<!--
+// キャッシュのモジュールの読み込み
+YUI().use('cache', function (Y) {
+  // キャッシュオブジェクト作成。maxは作成できる最大のキャッシュ数
+  var myCache = new Y.Cache({max:5});
+
+  // コンストラクタで指定するパラメータは、setで変更が可能。最大キャッシュ数の変更。
+  myCache.set("max", 10);
+  
+  // キャッシュの追加
+  myCache.add("key1", "value1");
+  myCache.add("function1", function(){
+    alert('cacheされた関数！');
+  });
+  
+  var callback = function(){
+    // キャッシュの読み込み
+    var cachedKey1 = myCache.retrieve("key1");
+    var cachedFunction1 = myCache.retrieve("function1");
+    
+    // key1=value1 とalertされる
+    alert(cachedKey1.request + "=" + cachedKey1.response);
+    
+    // cacheされた関数！とalertされる。キャッシュにはオブジェクトを格納が可能のため、関数も格納できる
+    cachedFunction1.response();
+    
+    // キャッシュを削除
+    myCache.flush();
+  };
+  
+  // callback関数の呼び出し
+  setTimeout(callback, 1000);
+});
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Tabs</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style>
+#tab { width: 500px; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#tab').tabs({
+    collapsible: true
+  });
+});
+</script>
+</head>
+<body>
+<div id="tab">
+  <ul>
+    <li><a href="#tab1">さくら</a></li>
+    <li><a href="#tab2">もも</a></li>
+    <li><a href="#tab3">うめ</a></li>
+  </ul>
+  <div id="tab1">
+    <p>
+    日本を代表する花です。「桜」と書きます。<br />
+    春になると桜の開花を待ち望む人が多く、お花見も行われます。<br />
+    たくさんの品種がありますが、桜というと一般的には、ソメイヨシノ（染井吉野）を指すようです。<br />
+    「さくら さくら やよいの空は」で始まる歌も有名です。<br />
+  </div>
+  <div id="tab2">
+    <p>
+    3月下旬から4月上旬頃に開花します。「桃」と書きます。<br />
+    薄い紅色のものが主流ですが、白色や濃紅色なものもあります。<br />
+    「桃の花」は春の季語とされています。7月から8月にかけて実ができ、「桃の実」は秋の季語とされています。<br />
+    シロップ漬けにした缶詰としてもよく売られています。<br />
+    </p>
+  </div>
+  <div id="tab3">
+    <p>
+    2月から3月にかけて、葉っぱよりも先に花をつけます。「梅」と書きます。<br />
+    今はお花見というとサクラですが、昔はウメを鑑賞することの方が多かったようです<br />。
+    梅の実は、梅干しや梅酒、梅ジャムなどいろいろ加工されて食用とされます。クエン酸などの有機酸を多く含み体にも良いと、健康食品としても売られています。<br />
+    </p>
+  </div>
+</div>
+</body>
+</html>

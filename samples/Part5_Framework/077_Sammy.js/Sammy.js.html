@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>書籍紹介</title>
+  <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+  <!--sammy.jsをインポート-->
+  <script src="js/sammy-latest.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+    <h1>書籍一覧</h1>
+    <ul id="link">
+      <li><a href="Sammy.js.html">トップページ</a></li>
+      <li><a href="#/page1">1ページ目</a></li>
+      <li><a href="#/page2">2ページ目</a></li>
+      <li><a href="#/page/page1">リダイレクト1ページ目</a></li>
+      <li><a href="#/page/page2">リダイレクト2ページ目</a></li>
+    </ul>
+    <!-- 動的に表示する部分 -->
+    <div id="main"></div>
+  </div>
+  </body>
+<script type="text/javascript">
+<!--
+//id=main要素に対して処理を行う部分を定義
+var app = $.sammy('#main', function() {
+  // URL/#/で動作する処理の定義。文字を表示する
+  this.get('#/', function() {
+    this.app.swap('本の一覧ページです。');
+  });
+
+  // URL/#/page1で動作する処理の定義。books1.htmlを読み込む
+  this.get('#/page1', function() {
+    this.partial('books1.html');
+  });
+
+  // URL/#/page2で動作する処理の定義。books1.htmlを読み込む
+  this.get('#/page2', function() {
+    this.partial('books2.html');
+  });
+  
+  // URLのパラメータがごとに動的にリダイレクト
+  this.get('#/page/:page', function() {
+    this.redirect('#', this.params['page']);
+  });
+});
+$(function() {
+    // ページ読み込み時に処理をする。初期表示は「#/」としてURLを変更する。
+    app.run('#/');
+});
+-->
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- bubble-tooltipの標準スタイルをインポート -->
+  <link rel=stylesheet href="css/bubble-tooltip.css"
+    type="text/css" media="screen">
+
+  <!-- bubble-tooltipライブラリをインポート -->
+  <script type="text/javascript" src="js/bubble-tooltip.js"></script>
+
+  <style>
+    body { padding:100px; }
+  </style>
+
+</head>
+<body>
+
+<a href="#" 
+onmouseover="showToolTip(event,'こんな感じに表示します')"
+onmouseout="hideToolTip()">ロールオーバー</a>
+表示します。<br />
+<span class="tooltip_text"
+onmouseover="showToolTip(event,'<b>タグ</b>も利用可能')"
+onmouseout="hideToolTip()">「このような」</span>
+記述も可能です。
+
+<!-- bubble-tooltipの本体 -->
+<div id="bubble_tooltip">
+  <div class="bubble_top"></div>
+  <div class="bubble_middle">
+    <span id="bubble_tooltip_content"></span>
+  </div>
+  <div class="bubble_bottom"></div>
+</div>
+
+</body>
+</html>

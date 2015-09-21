@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Tooltip</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $(document).tooltip({
+    items: '[title], [data-isbn]',
+    content: function() {
+      var el = $(this);
+      if (el.is('[data-isbn]')) {
+         var text = el.data('isbn');
+         return '<img src="http://www.wings.msn.to/books/' +
+           text + '/' + text + '.jpg" />';
+      } else if (el.is('[title]')) {
+         return el.attr('title');
+      }
+    }
+  });
+});
+</script>
+</head>
+<body>
+<a href="#" data-isbn="978-4-7741-5067-3">HTML5 開発ポケットリファレンス</a>好評発売中！<br />
+フォーム機能、<a href="#" title="ブラウザ上に図形を描く">Canvas</a>などのメディア機能、Webアプリ開発のためのAPIの書式や振る舞いを、逆引き形式ですぐに探せます。<br />
+豊富なサンプルで具体的な実装のイメージがつかめ、サンプルコードはサポートサイトからダウンロードできます。
+</body>
+</html>

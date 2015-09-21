@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- slidedown-menuの標準スタイルをインポート -->
+  <link rel="stylesheet" href="css/slidedown-menu2.css">
+
+  <!-- slidedown-menuライブラリをインポート -->
+  <script type="text/javascript" src="js/slidedown-menu2.js"></script>
+
+</head>
+<body>
+  <div id="dhtmlgoodies_slidedown_menu">
+    <ul>
+      <li><a href="#">メニュー１</a>
+        <ul>
+          <li id="initialExItem"><a href="#">メニュー１－１</a>
+            <ul>
+              <li><a href="#">アイテム１</a></li>
+              <li><a href="#">アイテム２</a></li>
+            </ul>
+          </li>
+          <li><a href="#">メニュー１－２</a>
+            <ul>
+              <li><a href="#">アイテム１</a></li>
+              <li><a href="#">アイテム２</a></li>
+              <li><a href="#">メニュー１－２－１</a>
+                <ul>
+                  <li><a href="#">アイテム１</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#">メニュー１－３</a>
+            <ul>
+              <li><a href="#">アイテム１</a></li>
+              <li><a href="#">アイテム２</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">メニュー２</a>
+        <ul>
+          <li><a href="#">アイテム１</a></li>
+          <li><a href="#">アイテム２</a></li>
+          <li><a href="#">アイテム３</a></li>
+        </ul>
+      </li>
+      <li><a href="#">メニュー３</a>
+        <ul>
+          <li><a href="#">アイテム１</a></li>
+          <li><a href="#">アイテム２</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+      var expandFirstItemAutomatically=1 ;
+//     var initMenuIdToExpand = 'initialExItem';
+      initSlideDownMenu();
+  </script>
+</body>
+</html>

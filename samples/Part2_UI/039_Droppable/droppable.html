@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Draggable＆Droppable</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style>
+.ui-droppable {
+  background-color: #ffc; width: 200px; height: 150px;
+  text-align: center; float: left; }
+.ui-draggable {
+  background-color: #0f3;
+  margin: 10px; padding: 10px;
+  float: left; }
+.ui-draggable-dragging { background-color: #ff0;}
+.highlight { background-color: #ff0;}
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#obj1, #obj2').draggable({ revert: true });
+  $('#vege').draggable();
+  $('#container').droppable({
+    accept: '#vege',
+    drop: function( e, ui ) {
+      $(this).addClass('highlight')
+        .html('野菜が入りました！');
+    }
+  });
+});
+</script>
+</head>
+<body>
+<div id="obj1">パンツ</div>
+<div id="obj2">バケツ</div>
+<div id="vege">キャベツ</div>
+<div id="container">この中に野菜を入れてね</div>
+</body>
+</html>

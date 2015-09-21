@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Validation</title>
+<style type="text/css">
+.valid-error { color: Red; }
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#fm').validate({
+    errorClass: 'valid-error',
+    rules: {
+      'name':{
+        required: true
+      },
+      'nickname': {
+        maxlength: 30
+      },
+      'password': {
+        required: true,
+        minlength: 6
+      },
+      'confirm_password': {
+        required: true,
+        equalTo: '#password'
+      },
+      'email': {
+        required: true,
+        email: true
+      },
+      'tel': { 
+        required: true
+      },
+      'birthday': { dateISO: true }
+    },
+    messages: {
+      'name': {
+        required: '氏名は必須です。',
+      },
+      'nickname': {
+        maxlength: jQuery.format('ニックネームは{0}文字以内で入力してください。')
+      }, 
+      password: {
+        required: 'パスワードは必須です。',
+        minlength: 'パスワードは6文字以上で入力してください。'
+      },
+      confirm_password: {
+        required: 'パスワード（確認）は必須です。',
+        equalTo: '上のパスワードと違います。'
+      },
+      'email': {
+        required: 'メールアドレスは必須です。',
+        email: 'メールアドレスの形式が不正です。'
+      },
+      'tel': { 
+        required: '電話番号は必須です。'
+      },
+      'birthday': {
+        dateISO: '誕生日は日付の形式で入力してください。'
+      }
+    }
+  });
+});
+</script>
+</head>
+<body>
+<form id="fm">
+<label>氏名：
+  <input type="text" id="name" name="name" size="30" />
+</label><br/>
+<label>ニックネーム：
+  <input type="text" id="nickname" name="nickname" size="30" />
+</label><br/>
+<label>パスワード：
+  <input type="text" id="password" name="password" size="20" />
+</label><br/>
+<label>パスワード（確認）：
+  <input type="text" id="confirm_password" name="confirm_password" size="20" />
+</label><br/>
+<label>メールアドレス：
+  <input type="text" id="email" name="email" size="30" />
+</label><br/>
+<label>電話番号：
+  <input type="text" id="tel" name="tel" size="20" />
+</label><br/>
+<label>誕生日：
+  <input type="text" id="birthday" name="birthday" size="15" />
+</label><br/>
+<input type="submit" value="登録" />
+</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YUIのサンプル</title>
+  <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+</head>
+<body>
+<input type="button" value="情報取得！" id="info" />
+<ul id="kanagawa">
+  <li id="yokohama">横浜</li>
+  <li id="kawasaki">川崎</li>
+  <li id="chigasaki">茅ヶ崎</li>
+</ul>
+</body>
+<script type="text/javascript">
+<!--
+// 画像のアニメーション
+YUI().use('node', function (Y) {
+  // 一つだけ要素を取得
+  var yokohama = Y.one('#yokohama');
+  
+  // まとめて要素を取得
+  var kanagawa = Y.all('#kanagawa li');
+  
+  // マウスイベント
+  Y.one('#info').on('click',function(e){
+    // 「横浜」と表示される
+    alert(yokohama.get('text'));
+    // 「横浜\n川崎\n茅ヶ崎」と表示される
+    alert(kanagawa.get('text'));
+  });
+});
+-->
+</script>
+</html>

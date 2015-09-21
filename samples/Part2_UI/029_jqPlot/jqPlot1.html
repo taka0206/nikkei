@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- jqPlotの標準スタイルをインポート -->
+  <link rel=stylesheet
+    href="css/jquery.jqplot.min.css" type="text/css" />
+
+    <!--[if lt IE 9]>
+    <script language="javascript"
+      type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]-->
+
+  <script type="text/javascript" 
+    src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script type="text/javascript"
+    src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+
+  <!-- jqPlotライブラリをインポート -->
+  <script type="text/javascript"
+    src="js/jquery.jqplot.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.barRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+  <script type="text/javascript"
+    src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function(){
+      var d1 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+
+      var d2 = [];
+      for (var i = 0; i < 14; i += 0.5) {
+        d2.push( [i, Math.sin(i)] );
+      }
+
+      $.jqplot( 'graph1', [ d1, d2 ],
+          { series: [ {label: '折れ線'}, {label: 'サイン波'} ], legend: {show: true} }
+      );
+
+    });
+  </script>
+</head>
+<body>
+  <div id="graph1" style="width:600px;height:300px;"></div><br />
+</body>
+</html>

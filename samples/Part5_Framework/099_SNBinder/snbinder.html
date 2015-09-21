@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>SNBinder sample</title>
+  <!-- jQueryをインポート -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <!-- snbinderをインポート -->
+  <script type="text/javascript" src="js/snbinder-0.5.3.js"></script>
+  <!-- SNBinder使用スクリプトをインポート -->
+  <script type="text/javascript" src="js/greeter.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // (1) SNBinderの初期化
+      SNBinder.init({});
+
+      // (2) 各バインドメソッドの呼び出し
+      $("#greet").click(function () {
+        var name = $("#name").val();
+        // シンプルなバインド
+        bindSimple(name);
+        // 事前コンパイルによるバインド
+        bindByCompiled(name);
+        // 配列のバインド
+        bindFromArray(name);
+        // テンプレートをHTTP経由で取得
+        bindTemplateFile(name);
+        // セクション定義テンプレートをHTTP経由で取得
+        bindTemplateFileWithSections(name);
+        // 名前付きセクション定義テンプレートをHTTP経由で取得
+        bindTemplateFileWithNamedSections(name);
+        // バインド対象データをHTTP経由で取得
+        bindFromJsonOverHttp(name);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>
+    名前を入力してください :
+    <input type="text" id="name" />
+    <button id="greet">あいさつ</button>
+  </div>
+  <div id="bind-simple"></div>
+  <div id="bind-by-compiled"></div>
+  <div id="bind-from-array"></div>
+  <div id="bind-template-file"></div>
+  <div id="bind-template-file-with-sections"></div>
+  <div id="bind-template-file-with-named-sections"></div>
+  <div id="bind-from-json-over-http"></div>
+</body>
+</html>

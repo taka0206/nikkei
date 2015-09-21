@@ -1,0 +1,16 @@
+{
+  "books": [
+  {
+    "name" : "アプリを作ろう！　Android入門 ～ゼロから学ぶアプリの作成から公開まで",
+    "price": 1995
+  },
+  {
+    "name" : "TECHNICAL MASTER　はじめてのJSP＆サーブレット　Eclipse 3.7 Indigo＋Tomcat 7対応版",
+    "price": 2730
+  },
+  {
+    "name" : "Windows Azure Platform開発入門",
+    "price": 3990
+  }
+  ]
+}

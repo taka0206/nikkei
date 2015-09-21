@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/mocha.css" />
+  <script type="text/javascript" src="js/chai.js"></script>
+  <script type="text/javascript" src="js/mocha.js"></script>
+  <script type="text/javascript">
+  <!--
+  // mochaの機能を呼び出します。ここでは、bddとtddを使います
+  mocha.setup('bdd');
+  mocha.setup('tdd');
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+  // chaiのアサーションモジュールを読み込む
+  // expectの機能を読み込み
+  var expect = chai.expect;
+  
+  // テスト対象のメソッド
+  var fizzbuzz = function(n){
+      if (n > 1)
+      fizzbuzz(n-1);
+      if (n % 3 == 0 && n % 5 == 0)
+      return "Fizz,Buzz";
+      else if (n % 3 == 0)
+      return "Fizz";
+      else if (n % 5 == 0)
+      return "Buzz";
+      else
+      return n;
+    }
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+  // BDD形式のテスト
+  describe('fizzbuzzのテストを行います（BDD）', function() {
+    describe('#fizzbuzz()', function() {
+      it("3の場合はFizzが返ってくる", function () {
+        expect("Fizz").to.eql(fizzbuzz(3));
+      });
+      it("3と5の倍数以外は、数字が返ってくる", function () {
+        expect("Fizz").not.to.eql(fizzbuzz(1));
+        expect("Buzz").not.to.eql(fizzbuzz(1));
+        expect("Fizz,Buzz").not.to.eql(fizzbuzz(1));
+      });
+      it("5の場合はBuzzが返ってくる", function () {
+        expect("Buzz").to.eql(fizzbuzz(5));
+      });
+      it("15の場合はFizz,Buzzが返ってくる", function () {
+        expect("Fizz,Buzz").to.eql(fizzbuzz(15));
+      });
+    });
+  });
+
+  // TDD形式のテスト
+  suite('fizzbuzzのテストを行います（TDD）', function(){
+    suite('#fizzbuzz()', function(){
+      test('2の場合はそのまま返ってくる', function(){
+        expect(2).to.eql(fizzbuzz(2));
+      });
+    });
+  });
+  -->
+  </script>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+<script type="text/javascript">
+<!--
+// テストの実行
+mocha
+  .globals([ 'localizedStrings' ])
+  .globals([ 'script*' ])
+  .run();
+-->
+</script>
+</html>

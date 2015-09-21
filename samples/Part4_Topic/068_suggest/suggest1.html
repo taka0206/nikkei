@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- suggestの標準スタイルをインポート（1）-->
+  <link rel="stylesheet" href="css/suggest.css" type="text/css"></link>
+
+  <!-- jQueryライブラリをインポート（2） -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+  <!-- suggestライブラリをインポート（3） -->
+  <script type="text/javascript" src="js/suggest.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      var list = [ 'Java', 'JavaScript', 'Perl', 'Ruby', 'PHP', 'Python', 'C', 'C++', '.NET',
+        'MySQL', 'Oracle', 'PostgreSQL'];
+
+      new Suggest.Local(
+        "text",    // 入力のエレメントID
+        "suggest", // 補完候補を表示するエリアのID
+        list,      // 補完候補の検索対象となる配列
+        {dispMax: 10, interval: 1000, highlight:true}); // オプション
+    });
+  </script>
+</head>
+<body>
+
+<form onsubmit="return false;">
+  <table>
+    <tr>
+      <td>入力:</td>
+      <td>
+        <!-- 入力フォーム -->
+        <input id="text" type="text" name="pattern" value="" autocomplete="off" size="10" style="display: block">
+        <!-- 補完候補を表示するエリア -->
+        <div id="suggest" style="display:none;"></div>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

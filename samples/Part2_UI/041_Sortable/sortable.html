@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Sortable</title>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/ui/1.10.0/themes/ui-lightness/jquery-ui.css" />
+<style type="text/css">
+  .highlight { background-color: #ff0;}
+</style>
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#list').sortable({
+    revert: true,
+    placeholder: 'highlight',
+    update: function(e, ui) {
+      $('#result').text($('#list').sortable('toArray'));
+    }
+  });
+});
+</script>
+</head>
+<body>
+<h2>ToDoリスト</h2>
+<ul id="list">
+<li id="1">1 Z書籍の校正</li>
+<li id="2">2 WINGS会議の資料作成</li>
+<li id="3">3 新刊案内のDM配信</li>
+<li id="4">4 B記事の査読＆検証</li>
+<li id="5">5 X書籍のサポートページ作成</li>
+<li id="6">6 年末調整</li>
+<li id="7">7 お歳暮の手配</li>
+<li id="8">8 WINGS新規メンバーの面接</li>
+<li id="9">9 Y書籍の脱稿</li>
+</ul>
+<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+@-o-keyframes rotate {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+	}
+}
+@-ms-keyframes rotate {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+	}
+}
+@-moz-keyframes rotate {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Make tables spaced out a bit more */
+h2 + table,
+h3 + table,
+h4 + table,
+h2 + .row {
+  margin-top: 5px;
+}
+
+.swarm-code-nowrap {
+	white-space: nowrap;
+}
+
+.swarm-toollinks {
+	text-align: right;
+}
+
+.well-swarm-icon {
+	position: relative;
+	padding: 9px;
+	text-align: center;
+}
+
+.well-swarm-icon .swarm-onlineclients {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	line-height: normal;
+}
+
+.well-swarm-icon .swarm-icon {
+	margin-top: 10px;
+	margin-bottom: 7px;
+}
+
+.swarm-browsername:hover {
+	cursor: default;
+}
+
+.swarm-browsername {
+	/* Inline bubble with line breaks */
+	display: inline-block;
+}
+
+/**
+ * Results table.
+ * The swarm-status colors are now all derived from the following greens:
+ * #DBEFD7 (bg) / #468847 (text). The derived colors are calculated using
+ * HSL, and for clarity I've included those so that it's easy to update the
+ * saturation/lightness later. However due to browser support I the CSS
+ * properties are set to the HEX verions.
+ *
+ * background: hsl(H.., 44%, 89%)
+ *                           color: hsl(H.., 32%, 40%)
+ * -
+ * new:        hsl(0,   0%,  91%) / hsl(0,   0%,  40%)
+ * progress:   hsl(49,  44%, 89%) / hsl(49,  32%, 40%)
+ * passed:     hsl(110, 44%, 89%) / hsl(110, 32%, 40%)
+ * failure, timedout
+ * and error:  hsl(0,   44%, 89%) / hsl(0,   32%, 40%)
+ */
+
+table.swarm-results {
+	white-space: nowrap;
+}
+
+table.swarm-results thead th,
+table.swarm-results tbody td.swarm-status {
+	vertical-align: top;
+	text-align: center;
+	background: #fff;
+}
+
+table.swarm-results tbody td.swarm-status {
+	font-weight: bold;
+}
+
+table.swarm-results tbody td.swarm-status [class*=" icon-"] {
+	opacity: .3;
+	margin-left: 7px;
+}
+
+table.swarm-results tbody td.swarm-status:hover [class*=" icon-"] {
+	opacity: 1;
+	cursor: pointer;
+}
+
+table.swarm-results tbody td.swarm-status-new {
+	background: #E8E8E8;
+}
+table.swarm-results tbody td.swarm-status-new,
+table.swarm-results tbody td.swarm-status-new a {
+	color: #666);
+}
+
+table.swarm-results tbody td.swarm-status-progress {
+	background: #EFEBD7;
+}
+
+table.swarm-results tbody td.swarm-status-progress,
+table.swarm-results tbody td.swarm-status-progress a {
+	color: #877B45;
+}
+
+table.swarm-results tbody td.swarm-status-passed {
+	background: #DBEFD7;
+}
+table.swarm-results tbody td.swarm-status-passed,
+table.swarm-results tbody td.swarm-status-passed a {
+	color: #508745;
+}
+
+table.swarm-results tbody td.swarm-status-timedout,
+table.swarm-results tbody td.swarm-status-error,
+table.swarm-results tbody td.swarm-status-failed {
+	background: #EFD7D7;
+}
+table.swarm-results tbody td.swarm-status-timedout,
+table.swarm-results tbody td.swarm-status-timedout a,
+table.swarm-results tbody td.swarm-status-error,
+table.swarm-results tbody td.swarm-status-error a,
+table.swarm-results tbody td.swarm-status-failed,
+table.swarm-results tbody td.swarm-status-failed a {
+	color: #874545);
+}
+
+table.swarm-results tbody td.swarm-status-notscheduled {
+	background: #fff;
+}
+
+.swarm-status-progressicon {
+	-o-animation-name: rotate;
+	-o-animation-direction: normal;
+	-o-animation-duration: 2s;
+	-o-animation-timing-function: linear;
+	-o-animation-iteration-count: infinite;
+
+	-ms-animation-name: rotate;
+	-ms-animation-direction: normal;
+	-ms-animation-duration: 2s;
+	-ms-animation-timing-function: linear;
+	-ms-animation-iteration-count: infinite;
+
+	-moz-animation-name: rotate;
+	-moz-animation-direction: normal;
+	-moz-animation-duration: 2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: rotate;
+	-webkit-animation-direction: normal;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: rotate;
+	animation-direction: normal;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.swarm-item-actions {
+	text-align: right;
+}
+
+.swarm-page-footer {
+	text-align: center;
+	margin-bottom: 18px;
+}
+
+/**
+ * UA icons.
+ * Display device or browser, and os.
+ */
+
+.swarm-icon {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background: url(../img/browser-unknown.png) 50% 50% no-repeat;
+	background-size: contain;
+}
+
+.swarm-browser-chrome {
+	background-image: url(../img/browser-chrome.png);
+}
+
+.swarm-browser-chromium {
+	background-image: url(../img/browser-chromium.png);
+}
+
+.swarm-browser-firefox {
+	background-image: url(../img/browser-firefox.png);
+}
+
+.swarm-browser-firefox_mobile {
+	background-image: url(../img/browser-firefox_mobile.png);
+}
+
+/* IE9+ */
+.swarm-browser-ie {
+	background-image: url(../img/browser-ie.png);
+}
+
+.swarm-browser-ie-6 {
+	background-image: url(../img/browser-ie-6.png);
+}
+
+/* IE7/IE8 have the same logo */
+.swarm-browser-ie-7,
+.swarm-browser-ie-8 {
+	background-image: url(../img/browser-ie-8.png);
+}
+
+.swarm-browser-opera,
+.swarm-browser-opera_mini,
+.swarm-browser-opera_mobile {
+	background-image: url(../img/browser-opera.png);
+}
+
+.swarm-browser-safari,
+.swarm-browser-mobile_safari {
+	background-image: url(../img/browser-safari.png);
+}
+
+.swarm-browser-webkit_nightly {
+	background-image: url(../img/browser-webkit.png);
+}
+
+.swarm-device-ipad {
+	background-image: url(../img/device-ipad.png);
+}
+
+.swarm-device-iphone {
+	background-image: url(../img/device-iphone.png);
+}
+
+.swarm-os::after {
+	position: absolute;
+	bottom: -1px;
+	right: -1px;
+	content: "";
+	display: block;
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: 7px solid transparent;
+	background: rgba(255, 255, 255, 0.85) 49% 50% no-repeat;
+	background-size: contain;
+}
+
+.swarm-os-android::after {
+	background-image: url(../img/os-android.png);
+}
+
+.swarm-os-ios::after {
+	background-image: url(../img/os-ios.png);
+}
+
+.swarm-os-mac_os_x::after {
+	background-image: url(../img/os-macosx.png);
+}
+
+.swarm-os-windows::after,
+.swarm-os-windows_xp::after {
+	background-image: url(../img/os-winxp.png);
+}
+
+.swarm-os-windows_vista::after,
+.swarm-os-windows_7::after {
+	background-image: url(../img/os-win7.png);
+}
+
+.swarm-os-windows_8::after {
+	background-image: url(../img/os-win8.png);
+}
+
+.swarm-icon-small {
+	max-width: 48px;
+	max-height: 48px;
+}
+.swarm-icon-small.swarm-os::after {
+	border-width: 3px;
+}
