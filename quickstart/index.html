@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jqGrid Template</title>
+		<link rel="stylesheet" href="css/jquery.ui.theme.css"/>
+		<link rel="stylesheet" href="css/ui.jqgrid.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/grid.locale-ja.js"></script>
+		<script src="js/jquery.jqGrid.min.js"></script>
+	</head>
+	<body>
+		<table id="quickstart_grid"></table>
+
+		<script>
+			var dataArray = [
+				{name: 'Bob', phone: '232-532-6268'},
+				{name: 'Jeff', phone: '365-267-8325'}
+				];
+			$("#quickstart_grid").jqGrid({
+				datatype:'local',
+				data: dataArray,
+				colModel: [
+					{name: 'name', label: 'Name'},
+					{name: 'phone', label: 'Phone Number'}
+					],
+					height: 'auto',
+					caption: 'Users Grid',
+			});
+		</script>
+	</body>
+</html>
